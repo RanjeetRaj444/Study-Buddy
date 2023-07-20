@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
@@ -12,7 +12,9 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
+import LoginModal from "../Pages/LoginModal";
 const Navbar = () => {
+  const [loginOpen, setLoginOpen] = useState(false);
   return (
     <DIV>
       <div className="left">
@@ -39,19 +41,19 @@ const Navbar = () => {
         </div>
       </div>
       <div className="searchBox">
-       
+
       </div>
       <div className="navButton">
-        <Button>
-          {" "}
-          <Link to={"/login"}>Login</Link>
+        <Button onClick={() => { setLoginOpen(true) }}>
+          Login
         </Button>
         <Button>
-          {" "}
-          <Link to={"/signup"}>Signup</Link>
+          Signup
         </Button>
       </div>
+      <LoginModal loginOpen={loginOpen} setLoginOpen={setLoginOpen}/>
     </DIV>
+
   );
 };
 
