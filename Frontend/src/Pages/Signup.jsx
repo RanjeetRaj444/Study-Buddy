@@ -20,7 +20,6 @@ const Signup = () => {
             <Link to={"/login"}>Login</Link>
           </div>
         </div>
-
       </div>
     </DIV>
   )
