@@ -98,7 +98,7 @@ const Footer = () => {
           </Select>
         </div>
       </div>
-      <div className="bottom">
+      <div className="footerBotom">
         <div className="icons">
           <div className="iconContainer">
             <FaYoutube />
@@ -121,7 +121,8 @@ const DIV = styled.div`
   .top {
     display: flex;
     justify-content: space-around;
-    margin-top: 60px;
+    /* margin-top: 60px; */
+    padding: 30px;
   }
   .container p {
     display: flex;
@@ -132,7 +133,7 @@ const DIV = styled.div`
     flex-direction: column;
     gap: 12px;
   }
-  .bottom {
+  .footerBotom {
     display: flex;
     justify-content: space-between;
     padding: 30px;
