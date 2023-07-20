@@ -29,9 +29,13 @@ const Navbar = () => {
             <PopoverContent>
               <PopoverArrow />
               <PopoverCloseButton />
-              <PopoverHeader>Confirmation!</PopoverHeader>
               <PopoverBody>
-                Are you sure you want to have that milkshake?
+               <div>
+                <Text>hi</Text>//
+                <Text>hi</Text>
+                <Text>hi</Text>
+                <Text>hi</Text>
+               </div>
               </PopoverBody>
             </PopoverContent>
           </Popover>
@@ -80,7 +84,9 @@ const DIV = styled.div`
   .searchBox {
     width: 45%;
   }
-  
 `;
 
 export default Navbar;
+<form action="/search/" class="s19dmjr1" role="search">
+  
+</form>
