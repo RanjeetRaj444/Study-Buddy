@@ -1,0 +1,46 @@
+.homeDiv{
+    display: grid;
+    height: 650px;
+    grid-template-columns: 20% 78%;
+    justify-content: space-between;
+    background-color: rgba(135, 207, 235, 0.281);
+    padding: 20px;
+}
+.rightDiv{
+    background-color: white;
+    border-radius: 10px;
+}
+.NavDiv{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: white;
+}
+.logoDiv>img{
+    width:80%;
+}
+.logoDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.Active,.notActive{
+    text-align: start;
+    padding-left: 20px;
+    margin: 10px 0px;
+    color: grey;
+    font-weight: 600;
+}
+.Active{
+    color: purple;
+    border-right: 3px solid purple;
+}
+.notActive:hover{
+    color: black;
+}
+
+.Active>span:nth-child(1),.notActive>span:nth-child(1){
+   margin-right: 10px;
+   position: relative;
+   top: 4px;
+}
