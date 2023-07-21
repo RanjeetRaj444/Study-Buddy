@@ -16,7 +16,7 @@ import LoginModal from "../Pages/LoginModal";
 const Navbar = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   return (
-    <DIV>
+    <DIV id="homePageNavbar">
       <div className="left">
         <div>
           <img src="" alt="images" />
