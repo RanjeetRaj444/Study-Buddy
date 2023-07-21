@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import { Button, Heading, Text } from "@chakra-ui/react";
 import { styled } from "styled-components";
 import image1 from "../Assets/landingPageImage.avif";
@@ -228,7 +228,7 @@ const LandingPage = () => {
         </div>
       </div>
       <div className="footerPart">
-        <Footer />
+        
       </div>
     </DIV>
   );
@@ -246,11 +246,9 @@ const DIV = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* color: white; */
   }
   .topContainer {
     height: 100%;
-    /* margin-top: 400px; */
     margin: 0px 200px;
     padding: 200px 0px;
   }
@@ -275,7 +273,6 @@ const DIV = styled.div`
     justify-content: center;
     gap: 20px;
   }
-
   .work {
     display: flex;
     align-items: flex-start;
@@ -292,12 +289,12 @@ const DIV = styled.div`
   }
   .seccondBtn {
     width: 50%;
-    background-color: blue;
+    background-color: #4d4dec;
     color: white;
   }
   .seccondBtn:hover {
     width: 50%;
-    background-color: #3535fc;
+    background-color: #2b2bf6;
     color: white;
   }
   .bottomsec {
@@ -314,22 +311,18 @@ const DIV = styled.div`
     margin: auto;
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
   }
   .studentLove div {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 30%;
   }
   .studentLove div p {
-    /* width: 30%;/ */
     padding: 15px;
-    /* font-size: 2px; */
   }
   .bottom {
     margin-top: 100px;
     padding: 130px 2px;
-    background-color: #b8b8f5;
-    /* display: flex; */
+    background-color: #cacaeb;
   }
   .containers {
     display: flex;
