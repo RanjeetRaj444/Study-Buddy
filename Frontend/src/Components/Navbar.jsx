@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 const Navbar = () => {
   return (
-    <DIV>
+    <DIV id="homePageNavbar">
       <div className="left">
         <div>
           <img src="" alt="images" />
