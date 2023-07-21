@@ -1,5 +1,6 @@
 // import logo from "./logo.svg";
 import "./App.css";
+import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import MainRoutes from "./Pages/MainRoutes";
 
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <Navbar />
       <MainRoutes/>
+      <Footer />
     </div>
   );
 }
