@@ -13,8 +13,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import LoginModal from "../Pages/LoginModal";
+import SignupModal from "../Pages/SignupModal";
 const Navbar = () => {
   const [loginOpen, setLoginOpen] = useState(false);
+  const [signupOpen, setSignupOpen] = useState(false);
   return (
     <DIV>
       <div className="left">
@@ -51,11 +53,12 @@ const Navbar = () => {
         <Button onClick={() => { setLoginOpen(true) }}>
           Login
         </Button>
-        <Button>
+        <Button onClick={() => { setSignupOpen(true) }}>
           Signup
         </Button>
       </div>
       <LoginModal loginOpen={loginOpen} setLoginOpen={setLoginOpen}/>
+      <SignupModal signupOpen={signupOpen} setSignupOpen={setSignupOpen}/>
     </DIV>
 
   );
