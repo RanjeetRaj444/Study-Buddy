@@ -7,6 +7,18 @@ import UserLog from './UserLog'
 import style from './Admin.module.css'
 
 export default function Admin() {
+    
+    useEffect(()=>{
+        const homePageNavbar=document.getElementsByClassName('navbar')
+        const homePageFooter=document.getElementsByClassName('footer')
+        homePageNavbar[0].style.display="none"
+        homePageFooter[0].style.display="none"
+    
+        return ()=>{
+            homePageNavbar[0].style.display="block"
+            homePageFooter[0].style.display="block"
+        }
+      },[])
 
     return (
         <div className={style.adminPageDiv}>
