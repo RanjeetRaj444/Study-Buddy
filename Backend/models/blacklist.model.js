@@ -6,4 +6,4 @@ const blackListSchema = new mongoose.Schema({
 
 const BLackListModel = mongoose.model("blacklist", blackListSchema);
 
-module.exports = {BLackListModel}
+module.exports = {BLackListModel};

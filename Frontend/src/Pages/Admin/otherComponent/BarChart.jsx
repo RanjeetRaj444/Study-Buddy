@@ -12,7 +12,6 @@ export const data = [
 export const options = {
     chart: {
         title: "Company Performance",
-        subtitle: "Sales, Expenses, and Profit: April-Current",
     },
 };
 

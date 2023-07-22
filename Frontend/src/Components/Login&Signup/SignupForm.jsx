@@ -3,16 +3,28 @@ import { useReducer } from "react";
 import { styled } from "styled-components"
 
 let initialState = {
-    email: "", password: ""
+    birthday: "", email: "", username: "", password: ""
 };
 
 const reducer = (state, action) => {
     const { type, payload } = action;
     switch (type) {
+        case "birthday": {
+            return {
+                ...state,
+                birthday: payload,
+            }
+        }
         case "email": {
             return {
                 ...state,
                 email: payload,
+            }
+        }
+        case "username": {
+            return {
+                ...state,
+                username: payload,
             }
         }
         case "password": {
@@ -51,25 +63,38 @@ const SignupForm = () => {
             <div className="formSec">
                 <form onSubmit={handleSubmit}>
                     <FormControl isRequired>
+                        <FormLabel fontSize={"sm"} color={"#718096"}>BIRTHDAY</FormLabel>
+                        <input type="date" name="birthday" value={state.birthday} onChange={handleChange} />
+                    </FormControl>
+                    <FormControl isRequired>
+                        <FormLabel fontSize={"sm"} color={"#718096"}>EMAIL</FormLabel>
                         <input
-                            placeholder="Type your email address or username"
+                            placeholder="user@studdyBuddy.com"
                             name="email"
                             value={state.email}
                             onChange={handleChange}
                         />
-                        <FormLabel fontSize={"sm"} color={"#718096"}>EMAIL</FormLabel>
+                    </FormControl>
+                    <FormControl isRequired>
+                        <FormLabel fontSize={"sm"} color={"#718096"}>USERNAME</FormLabel>
+                        <input
+                            placeholder="john123"
+                            name="username"
+                            value={state.username}
+                            onChange={handleChange}
+                        />
                     </FormControl>
                     <FormControl isRequired >
+                        <FormLabel fontSize={"sm"} color={"#718096"}>PASSWORD</FormLabel>
                         <input
                             type="password"
-                            placeholder="Type your password"
+                            placeholder="*******"
                             name="password"
                             value={state.password}
                             onChange={handleChange} />
-                        <FormLabel fontSize={"sm"} color={"#718096"}>PASSWORD</FormLabel>
                     </FormControl>
                     <div className="policyText">
-                        <Text>By tapping Log in, you accept Quizlet's</Text>
+                        <Text>By tapping Sign up, you accept StuddyBuddy's</Text>
                         <Text>
                             Terms of Service
                         </Text>
@@ -80,18 +105,14 @@ const SignupForm = () => {
                             Privacy Policy
                         </Text>
                     </div>
-                    <Button type="submit" width={"100%"} height={"70px"} size={"lg"} fontWeight={"bold"} color={"white"} bg={"teal.400"} _hover={{ bg: "teal" }}>Log in</Button>
-                    <div className="bottomText">
-                        <Text>Remember to log out on shared devices</Text>
-                        <Text>Forgot?</Text>
-                    </div>
+                    <Button type="submit" width={"100%"} height={"70px"} size={"lg"} fontWeight={"bold"} color={"white"} bg={"teal.400"} _hover={{ bg: "teal" }}>Sign up</Button>
                 </form>
             </div>
             <div className="bottomSec">
                 <Text>
-                    New to StuddyBuddy?
+                    Already have an account?
                 </Text>
-                <Text>Create an account</Text>
+                <Text>Log in</Text>
             </div>
         </DIV>
     )
@@ -113,19 +134,22 @@ align-items: center;
 }
 .formSec input{
     width: 100%;
-    border-bottom: 3px solid #2D3748;
+    border-radius: 3px;
+    outline: 2px solid;
     height: 53px;
-    outline: none;
     font-size: 18px;
-    margin: 5px 0px;
+    padding: 0px 10px;
+    margin-bottom: 30px;
 }
 .formSec input:focus{
-    border-bottom:4px solid #f2c935;
+    outline: none;
+    border:3px solid #f2c935;
+    border-radius: 5px;
 }
 .policyText{
-    width: 74.5%;
+    width: 82%;
     display: flex;
-    margin: 25px auto;
+    margin: 0px auto 25px auto;
     justify-content: space-between;
     font-size: 13.5px;
     color: #718096;

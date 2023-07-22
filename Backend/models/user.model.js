@@ -11,10 +11,3 @@ module.exports = UsersModel;
 
 
 
-// image
-// title
-// author
-// solution
-// chapter [array]
-// exercise [array]
-// solution [string]

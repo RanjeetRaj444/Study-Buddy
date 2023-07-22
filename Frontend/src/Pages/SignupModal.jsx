@@ -9,23 +9,25 @@ import LoginSignupBanner from "../Components/Login&Signup/LoginSignupBanner";
 
 import LoginForm from "../Components/Login&Signup/LoginForm";
 import { styled } from "styled-components";
+import SignupForm from "../Components/Login&Signup/SignupForm";
 
-const LoginModal = ({ loginOpen, setLoginOpen }) => {
+const SignupModal = ({ signupOpen, setSignupOpen }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
 
   return <DIV>
-    <Modal isCentered isOpen={loginOpen} onClose={onClose}>
+    <Modal isCentered isOpen={signupOpen} onClose={onClose}>
       <ModalOverlay
         bg='white'
         backdropFilter='blur(10px) '
         display={"flex"}
         alignItems={"center"}
       >
-        <ModalCloseButton onClick={() => setLoginOpen(false)} />
+        <ModalCloseButton onClick={() => setSignupOpen(false)} />
         <LoginSignupBanner />
-          <LoginForm/>
+        <SignupForm/>
+          {/* <LoginForm/> */}
       </ModalOverlay>
     </Modal >
   </DIV >
@@ -38,4 +40,4 @@ const DIV=styled.div`
   visibility: hidden;
 `
 
-export default LoginModal;
+export default SignupModal;

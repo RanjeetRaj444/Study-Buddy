@@ -6,88 +6,50 @@ const userRouter = Router();
 
 userRouter.post("/register", async (req, res) => {
   try {
-    let { email, pass } = req.body;
-    const existingUser = await UserModel.find({ email });
-    if (existingUser.length) {
-      return res.status(200).send({
-        error: "Register Failed. User already exists",
+    const email = req.body.email;
+    const user = await UserModel.findOne({ email });
+    if (user) {
+      res.status(400).json({ msg: "user already registered" });
+    } else {
+      bcrypt.hash(req.body.password, 10, async (error, hash) => {
+        if (hash) {
+          const newUser = new UserModel({
+            ...req.body,
+            password: hash,
+          });
+          await newUser.save();
+          res.status(200).json({ msg: "user register sucessFully" });
+        }
       });
     }
-
-    if (checkPassword(pass)) {
-      const hashPass = bcrypt.hashSync(pass, 10);
-      const user = new UserModel({ ...req.body, pass: hashPass });
-      await user.save();
-      return res.status(200).send({
-        msg: "The new user has been registered.",
-        registeredUser: { ...req.body, pass: hashPass },
-      });
-    }
-    return res.status(400).send({
-      error:
-        "Register Failed. Password must contain at least one uppercase letter, one number, and one special character.",
-    });
-  } catch (err) {
-    return res.status(400).send({ error: err.message });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 });
 
-const checkPassword = (pass) => {
-  if (pass.length < 0) {
-    return false;
-  }
-
-  let alfabeta = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  let nums = "0123456789";
-  let specail = "[]{}!@#$%^&*()_-+=~`";
-  let flag1 = false;
-  let flag2 = false;
-  let flag3 = false;
-
-  for (let i = 0; i < pass.length; i++) {
-    if (alfabeta.includes(pass[i])) {
-      flag1 = true;
-    }
-    if (nums.includes(pass[i])) {
-      flag2 = true;
-    }
-    if (specail.includes(pass[i])) {
-      flag3 = true;
-    }
-  }
-  return flag1 && flag2 && flag3 ? true : false;
-};
 
 userRouter.post("/login", async (req, res) => {
-    try {
-      let { email, pass } = req.body;
-      const exitingUser = await UserModel.findOne({ email });
-      if (exitingUser) {
-        bcrypt.compare(pass, exitingUser.pass, (err, result) => {
-          if (result) {
-            try {
-              const token = jwt.sign({ userID: exitingUser._id }, "kamran", {
-                expiresIn: 120,
-              });
-              
-              return res
-                .status(200)
-                .send({ msg: "Login successFull!", token });
-            } catch (err) {
-              return res.status(400).send({ error: err.message });
-            }
-          }
-          res
-            .status(400)
-            .send({ error: "Login failed! wrong password is provided." });
-        });
-      } else res.status(400).send({ error: "Login Failed! Uesr Not Found" });
-    } catch (err) {
-      res.status(400).send({ error: err.message });
+  const { email, password } = req.body;
+  try {
+    const user = await UserModel.findOne({ email });
+    if (user) {
+      bcrypt.compare(password, user.password, (error, result) => {
+        if (result) {
+          let token = jwt.sign({ userID: user._id }, "studyBuddy");
+          res.status(200).json({ msg: "user logged in Sucessfully", token });
+        } else {
+          res.status(200).json({ msg: "Incorrect Password" });
+        }
+      });
     }
-  });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
-userRouter.get("/logout", async () => {
+
+
+userRouter.get("/logout", async (req, res) => {
   try {
     const token = req.headers.authorization?.split(" ")[1] || null;
     if (token) {
@@ -95,7 +57,7 @@ userRouter.get("/logout", async () => {
       res.status(200).send("Logout successfull!");
     }
   } catch (err) {
-    res.status(400).send({ error: err.message });
+    res.status(400).send({ err: err.message });
   }
 });
 
