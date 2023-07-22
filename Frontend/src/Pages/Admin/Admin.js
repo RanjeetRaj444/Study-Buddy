@@ -8,6 +8,15 @@ import style from './Admin.module.css'
 
 export default function Admin() {
 
+    useEffect(()=>{
+        const homePageNavbar=document.getElementById('homePageNavbar')
+        homePageNavbar.style.display='none'
+    
+        return ()=>{
+          homePageNavbar.style.display='block'
+        }
+      },[])
+
     return (
         <div className={style.adminPageDiv}>
             <div className={style.homeDiv}>
