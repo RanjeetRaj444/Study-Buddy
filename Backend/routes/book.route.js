@@ -27,10 +27,10 @@ bookRouter.get("/", async(req, res)=>{
 bookRouter.patch("/update/:id", async(req, res)=>{
     const {id} = req.params;
     try {
-        let book = await BookModel.findIdAndUpdate({_id: id}, req.body);
+        let book = await BookModel.findByIdAndUpdate({_id: id}, req.body);
         res.status(200).json({msg: "Book updated"})
     } catch (err) {
-        res.status(400).json({err: message})
+        res.status(400).json({error: err.message})
     }
 })
 
