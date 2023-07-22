@@ -9,7 +9,7 @@ import { Stat, StatArrow, StatHelpText, StatLabel, StatNumber } from '@chakra-ui
 
 export default function Dashboard() {
 
-  const [Todos, setTodos] = useState(JSON.parse(localStorage.getItem('adminTodo'))||[])
+  const [Todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos'))||[])
   const TodoTitle = useRef('')
 
 
@@ -19,11 +19,13 @@ export default function Dashboard() {
     } else {
       localStorage.setItem('adminTodo',JSON.stringify([...Todos, { title: TodoTitle.current, status: false }]))
       setTodos([...Todos, { title: TodoTitle.current, status: false }])
+      localStorage.setItem('todos', JSON.stringify([...Todos, { title: TodoTitle.current, status: false }]))
     }
   }
 
   function UpdateTodos(title) {
     let newData = Todos.map((todo) => todo.title === title ? { "title": todo.title, "status": !todo.status } : todo)
+    localStorage.setItem('todos',JSON.stringify(newData))
     setTodos(newData)
     localStorage.setItem('adminTodo',JSON.stringify(newData))
   }
@@ -44,7 +46,7 @@ export default function Dashboard() {
 
         <div className='stats_Div'>
           <div className='adminStats'>
-            <Stat bg='white' borderRadius='10px'>
+            <Stat bg='white' borderRadius='10px' textAlign={'center'}>
               <StatLabel>Profit</StatLabel>
               <StatNumber fontSize={'15px'}>345,670</StatNumber>
               <StatHelpText>
@@ -52,7 +54,7 @@ export default function Dashboard() {
                 23.36%
               </StatHelpText>
             </Stat>
-            <Stat bg='white' borderRadius='10px' display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+            <Stat bg='white' borderRadius='10px' display={'flex'} flexDirection={'column'} alignItems={'center'}>
               <StatLabel fontSize={'25px'}>Stock</StatLabel>
               <StatNumber></StatNumber>
               <StatHelpText>
@@ -120,6 +122,7 @@ justify-content: space-between;
   width:95%;
   margin-top:20px;
   overflow-y:scroll;
+  padding:10px;
 }
 
 .AddTodo{

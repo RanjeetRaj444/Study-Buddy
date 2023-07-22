@@ -12,7 +12,7 @@ const MainRoutes = () => {
   return (
     <div>
       <Routes>
-//         <Route path="/" element={<LandingPage />} />
+{/* //         <Route path="/" element={<LandingPage />} /> */}
         <Route path="/" element={<Homepage />} />
         <Route path="/explanations" element={"product page"} />
         <Route path="/admin/*" element={<Admin />} />
