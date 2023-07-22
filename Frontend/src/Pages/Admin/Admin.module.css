@@ -19,6 +19,7 @@
     flex-direction: column;
     border-radius: 10px;
     background-color: white;
+    height: 605px;
 }
 .logoDiv>img{
     width:80%;
@@ -102,7 +103,7 @@
         position: fixed;
         left: 0;
         width: 30px;
-        height: 95vh;
+        height: 90%;
     }
     .homeDiv{
         padding-left: 40px;
