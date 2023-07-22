@@ -10,18 +10,19 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   Button,
-  Text,
+  Text, Input, InputGroup, InputLeftElement, Icon,
 } from "@chakra-ui/react";
 import LoginModal from "../Pages/LoginModal";
 import SignupModal from "../Pages/SignupModal";
+import { FaSearch } from 'react-icons/fa';
 const Navbar = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
   return (
     <DIV className="navbar">
       <div className="left">
-        <div style={{width:"22%"}}>
-          <img  src={logo} alt="images" />
+        <div style={{ width: "22%" }}>
+          <img src={logo} alt="images" />
         </div>
 
         <div className="navigate">
@@ -49,7 +50,18 @@ const Navbar = () => {
           <Link to={"/explanations"}>Expert solutions</Link>
         </div>
       </div>
-      <div className="searchBox"></div>
+      <div className="searchBox"><InputGroup>
+        <InputLeftElement pointerEvents="auto">
+          <Icon as={FaSearch} color="gray.600" />
+        </InputLeftElement>
+        <Input
+          type="text"
+          placeholder="Search textbooks, questions"
+          borderRadius="full"
+          backgroundColor={"gray.100"}
+          _placeholder={{ color: 'gray.600', fontWeight: "semibold" }}
+        />
+      </InputGroup></div>
       <div className="navButton">
         <Button
           onClick={() => {
@@ -62,8 +74,8 @@ const Navbar = () => {
           Signup
         </Button>
       </div>
-      <LoginModal loginOpen={loginOpen} setLoginOpen={setLoginOpen}/>
-      <SignupModal signupOpen={signupOpen} setSignupOpen={setSignupOpen}/>
+      <LoginModal loginOpen={loginOpen} setLoginOpen={setLoginOpen} />
+      <SignupModal signupOpen={signupOpen} setSignupOpen={setSignupOpen} />
     </DIV>
   );
 };
