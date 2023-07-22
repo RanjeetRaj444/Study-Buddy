@@ -1,14 +1,17 @@
+
 import React, { useState } from 'react'
 import Navbar from './otherComponent/navbar'
 import { styled } from 'styled-components'
 import books from '../../db.json'
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 
+
 export default function Product() {
   const [newBook, setNewBook] = useState({"image":''})
   const { isOpen, onOpen, onClose } = useDisclosure()
   let [selected,setSeleted]=useState({})
   return (
+
     <div>
       <Navbar Path={'Pages / Product'} RouteName={'Product Preview'} />
       <Div>

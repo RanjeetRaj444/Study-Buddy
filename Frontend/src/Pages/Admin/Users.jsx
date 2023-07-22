@@ -1,11 +1,14 @@
 import React from 'react'
+
 import Navbar from './otherComponent/navbar'
 import { styled } from 'styled-components'
 const user = require('../../db.json')
 
+
 export default function Users() {
   
   return (
+
     <div>
       <Navbar Path={'Pages / Users'} RouteName={'User Preview'} />
       <Div>
@@ -30,10 +33,12 @@ export default function Users() {
 
       </Div>
     </div>
+
   )
 }
 
 const Div = styled.div`
+
 width: 100%;
 height: 540px;
 border-radius:10px;
@@ -91,3 +96,4 @@ padding:10px;
 }
 
 `
+
