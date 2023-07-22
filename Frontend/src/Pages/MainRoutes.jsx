@@ -2,13 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 // import LandingPage from "../Components/LandingPage";
 import Admin from "./Admin/Admin";
-import ProductPage from "./ProductPage";
 import Homepage from "../Components/Homepage";
-
-
 const MainRoutes = () => {
-
- 
   return (
     <div>
       <Routes>
