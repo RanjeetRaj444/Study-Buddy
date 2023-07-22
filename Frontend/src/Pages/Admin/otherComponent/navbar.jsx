@@ -1,8 +1,11 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { Avatar} from '@chakra-ui/react'
+import { Avatar, Button, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverTrigger } from '@chakra-ui/react'
 
 export default function Navbar({ RouteName, Path }) {
+
+    
+
     return (
         <Div>
             <div className='routeName'>
@@ -10,7 +13,21 @@ export default function Navbar({ RouteName, Path }) {
                 <h3>{RouteName}</h3>
             </div>
             <div className='profileSection'>
-                 <Avatar size='sm' bg='purple.500' />
+                <Popover>
+                    <PopoverTrigger>
+                        <Avatar size='sm' bg='purple.500' />
+                    </PopoverTrigger>
+                    <PopoverContent width={'200px'}>
+                        <PopoverArrow />
+                        <PopoverCloseButton />
+                        <PopoverBody >
+                            <div style={{display:'flex',gap:'10px',flexDirection:'column',marginTop:'20px'}}>
+                                <Button >Edit Profile</Button>
+                                <Button colorScheme='red'>Logout</Button>
+                            </div>
+                        </PopoverBody>
+                    </PopoverContent>
+                </Popover>
             </div>
         </Div>
     )

@@ -7,7 +7,7 @@ import image from "../Assets/image1.png";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <DIV>
+    <DIV className="footer">
       <div className="top">
         <div className="container">
           <Text fontSize="2xl">About Us</Text>
