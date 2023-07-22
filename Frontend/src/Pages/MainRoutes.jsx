@@ -2,12 +2,10 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 // import LandingPage from "../Components/LandingPage";
 import Admin from "./Admin/Admin";
-// import LoginForm from "../Components/Login&Signup/LoginForm";
 import Homepage from "../Components/Homepage";
 
-const MainRoutes = () => {
 
- 
+const MainRoutes = () => {
   return (
     <div>
       <Routes>
