@@ -25,17 +25,17 @@ const LoginModal = ({ loginOpen, setLoginOpen }) => {
       >
         <ModalCloseButton onClick={() => setLoginOpen(false)} />
         <LoginSignupBanner />
-          <LoginForm/>
+        <LoginForm />
       </ModalOverlay>
     </Modal >
   </DIV >
 }
 
-const DIV=styled.div`
+const DIV = styled.div`
   position: fixed;
   top: -50%;
-  border: 1px solid red;
   visibility: hidden;
+ 
 `
 
 export default LoginModal;

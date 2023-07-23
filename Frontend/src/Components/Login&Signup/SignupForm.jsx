@@ -1,4 +1,5 @@
 import { Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react"
+import axios from "axios";
 import { useReducer } from "react";
 import { styled } from "styled-components"
 
@@ -52,14 +53,14 @@ const SignupForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        axios.post("https://studybuddy-backend-t2yy.onrender.com/users/register", state).then((res) => {
+            console.log(res.data)
+        })
         dispatch({ type: "reset" });
+
     }
     return (
         <DIV>
-            {/* <div className="topSec">
-                <p>Signup</p>
-                <p>Login</p>
-            </div> */}
             <div className="formSec">
                 <form onSubmit={handleSubmit}>
                     <FormControl isRequired>
