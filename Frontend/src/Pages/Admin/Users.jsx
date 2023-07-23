@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './otherComponent/navbar'
 import { styled } from 'styled-components'
-const user = require('../../db.json')
-
+import { Button } from '@chakra-ui/react'
+import axios from 'axios'
 export default function Users() {
-  
+
+  let [user, setUsers] = useState([])
+
+console.log(user)
+
+  function updateSatus(name){
+    let newuser=user.map((user)=>user.name===name?{...user,status:!user.status}:user)
+    setUsers(newuser)
+  }
+
+  useEffect(()=>{
+      axios.get('https://studybuddy-backend-t2yy.onrender.com/users/allUser')
+      .then((res)=>{
+        let newData=res.data.map((data)=>({...data,"status":true}))
+        setUsers(newData)}
+        );
+  },[])
+
+
   return (
     <div>
       <Navbar Path={'Pages / Users'} RouteName={'User Preview'} />
@@ -22,7 +40,10 @@ export default function Users() {
               <td>{data.name}</td>
               <td>{data.email}</td>
               <td>
-                <button>Block</button>
+                {data.status?
+                  <Button colorScheme='red' onClick={()=>updateSatus(data.name)}>Block</Button>:
+                  <Button colorScheme='messenger' onClick={()=>updateSatus(data.name)}>Blocked</Button>
+                }
               </td>
             </tr>)}
           </tbody>
@@ -60,12 +81,7 @@ padding:10px;
 .usertable>tbody>tr>td:nth-child(3){
   text-align: end;
 }
-.usertable>tbody>tr>td:nth-child(3)>button{
-  padding:2px 10px;
-  border-radius:5px;
-  background-color:red;
-  color:white;
-}
+
 
 @media screen and (max-width:700px){
   height:610px;
