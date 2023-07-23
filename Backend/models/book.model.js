@@ -5,6 +5,7 @@ const bookSchema = mongoose.Schema({
     title: String,
     author: String,
     description: String,
+    category: String,
     solution_No: Number,
     chapter: [String],
     exercise: [String],
