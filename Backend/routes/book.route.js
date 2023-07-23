@@ -14,14 +14,37 @@ bookRouter.post("/add", async(req, res)=>{
 });
 
 
-bookRouter.get("/", async(req, res)=>{
+bookRouter.get("/", async (req, res) => {
     try {
-        let book = await BookModel.find();
-        res.status(200).json(book)
-    } catch (error) {
-        re.status(400).json({err: message})
+      const { category, sortBy } = req.query;
+  
+      const query = {};
+      if (category) {
+        query.category = category;
+      }
+  
+      const sortOptions = {};
+      if (sortBy) {
+        sortOptions[sortBy] = 1; 
+      }
+  
+      const books = await BookModel.find(query).sort(sortOptions).exec();
+      res.status(200).json(books);
+    } catch (err) {
+      res.status(400).json({err: message});
     }
-});
+  });
+  
+  
+  bookRouter.get("/getOneData/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+      const book = await BookModel.findOne({ _id: id });
+      res.status(200).json(book);
+    } catch (err) {
+      res.status(400).json({ err: message });
+    }
+  });
 
 
 bookRouter.patch("/update/:id", async(req, res)=>{
