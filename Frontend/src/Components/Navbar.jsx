@@ -20,8 +20,8 @@ const Navbar = () => {
   return (
     <DIV className="navbar">
       <div className="left">
-        <div style={{width:"22%"}}>
-          <img  src={logo} alt="images" />
+        <div style={{ width: "22%" }}>
+          <img src={logo} alt="images" />
         </div>
 
         <div className="navigate">
@@ -49,7 +49,12 @@ const Navbar = () => {
           <Link to={"/explanations"}>Expert solutions</Link>
         </div>
       </div>
-      <div className="searchBox"></div>
+
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search..." />
+        <button id="search-button">Search</button>
+      </div>
+
       <div className="navButton">
         <Button
           onClick={() => {
@@ -58,12 +63,16 @@ const Navbar = () => {
         >
           Login
         </Button>
-        <Button onClick={() => { setSignupOpen(true) }}>
+        <Button
+          onClick={() => {
+            setSignupOpen(true);
+          }}
+        >
           Signup
         </Button>
       </div>
-      <LoginModal loginOpen={loginOpen} setLoginOpen={setLoginOpen}/>
-      <SignupModal signupOpen={signupOpen} setSignupOpen={setSignupOpen}/>
+      <LoginModal loginOpen={loginOpen} setLoginOpen={setLoginOpen} />
+      <SignupModal signupOpen={signupOpen} setSignupOpen={setSignupOpen} />
     </DIV>
   );
 };
@@ -71,7 +80,7 @@ const Navbar = () => {
 const DIV = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 12px;
+  padding: 0px 12px ;
   /* border: 1px solid grey; */
   align-items: center;
   position: sticky;
@@ -94,9 +103,6 @@ const DIV = styled.div`
     display: flex;
     justify-content: space-between;
   }
-  .searchBox {
-    width: 45%;
-  }
   .drawer {
   }
   .option {
@@ -104,6 +110,31 @@ const DIV = styled.div`
   }
   .option:hover {
     background-color: #aaa7a7;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #search-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  #search-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #search-button:hover {
+    background-color: #0056b3;
   }
 `;
 
