@@ -2,7 +2,7 @@ import React from "react";
 // import Footer from "./Footer";
 import { Button, Heading, Text } from "@chakra-ui/react";
 import { styled } from "styled-components";
-import image1 from "../Assets/landingPageImage.avif";
+import image1 from "../Assets/landingPageImage2.avif";
 import learn from "../Assets/learn.svg";
 import smart from "../Assets/Smart Grading.svg";
 import test from "../Assets/Test.svg";
@@ -18,7 +18,7 @@ const LandingPage = () => {
             <Heading fontSize={"42px"} fontWeight={"bold"}>
               The best digital flashcards and study tools
             </Heading>
-            <p style={{ fontWeight: "bold" ,fontSize:"22px"}}>
+            <p style={{ fontWeight: "bold", fontSize: "22px" }}>
               Join over 60 million students using StudyBuddy's science-backed
               flashcards, practice tests and expert solutions to improve their
               grades and reach their goals.
@@ -123,7 +123,7 @@ const LandingPage = () => {
             <div>
               <Heading>Get homework help with expert solutions</Heading>
               <p>
-              StudyBuddy expert solutions show you step-by-step approaches to
+                StudyBuddy expert solutions show you step-by-step approaches to
                 solve tough problems. Find millions of solutions in your
                 subjects.
               </p>
@@ -185,8 +185,9 @@ const LandingPage = () => {
                 alt=""
               />
               <Text>
-                “Learn mode is the best thing that's ever come out of StudyBuddy.
-                It shows you terms in a way that makes it easiest to remember.”
+                “Learn mode is the best thing that's ever come out of
+                StudyBuddy. It shows you terms in a way that makes it easiest to
+                remember.”
               </Text>
             </div>
             <div>
@@ -227,18 +228,16 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="footerPart">
-        
-      </div>
+      <div className="footerPart"></div>
     </DIV>
   );
 };
 const DIV = styled.div`
   .Top_containertion {
     width: 100%;
-    height: 800px;
     background-image: url(${(props) => props.image1});
-    background-size: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
   }
   .Top_containertion div {
     width: 40%;
@@ -251,6 +250,7 @@ const DIV = styled.div`
     height: 100%;
     margin: 0px 200px;
     padding: 200px 0px;
+    color: white;
   }
   .heading {
     width: 80%;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Chart } from "react-google-charts";
+import  Chart  from "react-google-charts";
 
 export const data = [
     ["Month", "Sales", "Expenses", "Profit"],
@@ -12,7 +12,6 @@ export const data = [
 export const options = {
     chart: {
         title: "Company Performance",
-        subtitle: "Sales, Expenses, and Profit: April-Current",
     },
 };
 
