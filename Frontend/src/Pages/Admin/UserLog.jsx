@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Navbar from './otherComponent/navbar'
 import { styled } from 'styled-components'
 import { Button } from '@chakra-ui/react'
@@ -198,3 +199,4 @@ padding:10px;
 }
 
 `
+

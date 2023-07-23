@@ -1,8 +1,10 @@
+
 import React, { useEffect, useState } from 'react'
 import Navbar from './otherComponent/navbar'
 import { styled } from 'styled-components'
 import { Button } from '@chakra-ui/react'
 import axios from 'axios'
+
 export default function Users() {
 
   let [user, setUsers] = useState([])
@@ -24,6 +26,7 @@ console.log(user)
 
 
   return (
+
     <div>
       <Navbar Path={'Pages / Users'} RouteName={'User Preview'} />
       <Div>
@@ -51,10 +54,12 @@ console.log(user)
 
       </Div>
     </div>
+
   )
 }
 
 const Div = styled.div`
+
 width: 100%;
 height: 540px;
 border-radius:10px;
@@ -107,3 +112,4 @@ padding:10px;
 }
 
 `
+

@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const userRouter = require("./routes/user.route");
+const bookRouter = require('./routes/book.route');
 const app = express()
 require("dotenv").config();
 
@@ -15,10 +16,13 @@ const connect = async()=>{
         console.log(error)
     }
 }
-
+app.get("/", (req, res)=>{
+    res.send("welcome to home page!!!")
+})
 app.use("/users", userRouter);
+app.use("/books", bookRouter);
 
-app.listen(1010, ()=>{
+app.listen(7878, ()=>{
     connect()
     console.log("server run on 4040")
 });

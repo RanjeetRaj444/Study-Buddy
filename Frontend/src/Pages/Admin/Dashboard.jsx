@@ -12,10 +12,12 @@ export default function Dashboard() {
   const [Todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos'))||[])
   const TodoTitle = useRef('')
 
+
   function AddTodos() {
     if (TodoTitle.current === '') {
       alert('Please Enter a Title')
     } else {
+      localStorage.setItem('adminTodo',JSON.stringify([...Todos, { title: TodoTitle.current, status: false }]))
       setTodos([...Todos, { title: TodoTitle.current, status: false }])
       localStorage.setItem('todos', JSON.stringify([...Todos, { title: TodoTitle.current, status: false }]))
     }
@@ -25,6 +27,7 @@ export default function Dashboard() {
     let newData = Todos.map((todo) => todo.title === title ? { "title": todo.title, "status": !todo.status } : todo)
     localStorage.setItem('todos',JSON.stringify(newData))
     setTodos(newData)
+    localStorage.setItem('adminTodo',JSON.stringify(newData))
   }
 
   return (

@@ -1,9 +1,12 @@
+
 import React, { useEffect, useState } from 'react'
+
 import Navbar from './otherComponent/navbar'
 import { styled } from 'styled-components'
 
 import axios from 'axios'
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
+
 
 export default function Product() {
   const [newBook, setNewBook] = useState({})
@@ -60,6 +63,7 @@ useEffect(()=>{
 },[])
 
   return (
+
     <div>
       <Navbar Path={'Pages / Product'} RouteName={'Product Preview'} />
       <Div>
