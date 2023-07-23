@@ -1,9 +1,29 @@
 import { styled } from "styled-components";
-import { Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
+import { Faq } from "../Components/ProductPage/Faq";
+import SearchBar from "../Components/SearchBar";
 
 
 const ProductPage = () => {
     return <DIV>
+        <div className="topSec">
+            <div className="topSecUpperBox">
+                <div className="topSecHeading">
+                    <Text fontWeight={"bold"} fontSize={"44"} lineHeight={"55px"} mb={4}>Find free textbook solutions you can trust</Text>
+                    <Text display={"flex"} gap={"10px"} alignItems={"end"} fontWeight={"semibold"} fontSize={"lg"}><img src="http://localhost:3000/static/media/Step%20by%20Step.1e6776a4ffbc6113fe5ccd25bf649a90.svg" alt="" />Step-by-step explanations</Text>
+                    <Text display={"flex"} gap={"10px"} alignItems={"end"} fontWeight={"semibold"} fontSize={"lg"}><img src="http://localhost:3000/static/media/Solutions.56e800d9c23bb9854b89a50b2940a584.svg" alt="" />Expert-written and verified answers</Text>
+                    <Text display={"flex"} gap={"10px"} alignItems={"end"} fontWeight={"semibold"} fontSize={"lg"}><img src="http://localhost:3000/static/media/Textbook%20Solutions.b2400f81d90aab5f568179cc6a6d06ed.svg" alt="" />Millions of solutions for popular textbooks</Text>
+                </div>
+                <div className="topSecImages">
+                    <Box><img src="https://quizlet.com/_next/static/media/landing-page-header-phone-exercise.01626b15.svg" alt="" /></Box>
+                    <Box><img src="https://quizlet.com/_next/static/media/landing-page-header-phone-solution.f3708594.svg" alt="" />
+                    </Box>
+                </div>
+            </div>
+            <div className="topSecLowerBox">
+                <SearchBar/>
+            </div>
+        </div>
         <div className="container">
             <div className="container-Left">
                 <img
@@ -75,6 +95,10 @@ const ProductPage = () => {
                 </div>
             </div>
         </div>
+        <div className="faqSec">
+            <Heading m={"25px 0px"}>FAQs</Heading>
+            <Faq />
+        </div>
         <div className="container">
             <div className="container-Left">
                 <img
@@ -98,6 +122,39 @@ const ProductPage = () => {
 }
 
 const DIV = styled.div`
+.topSec{
+    width: 100%;
+    height: 430px;
+    background-color: #f2f5ff;
+    background-image: url("https://quizlet.com/_next/static/media/landing-page-header-jagged-lines-day.ea330eb6.svg");
+    background-repeat: no-repeat;
+    background-size: 62.5% auto;
+    background-position: top right;
+}
+.topSecUpperBox{
+    display: flex;
+    justify-content: space-evenly;
+    height: 320px;
+}
+.topSecHeading{
+    width: 31.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 15px;
+}
+.topSecHeading img{
+    width: 6%;
+}
+.topSecImages{
+    display: flex;
+    width: 42.8%;
+    justify-content: end;
+}
+.topSecLowerBox{
+    width: 70%;
+    margin: 40px auto;
+}
     .container {
     display: flex;
     justify-content: space-between;
@@ -111,6 +168,10 @@ const DIV = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+  }
+  .faqSec{
+    width: 70%;
+    margin: auto;
   }
   .downloadButton{
     margin-top: 15px;

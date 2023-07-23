@@ -10,10 +10,11 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   Button,
-  Text,
+  Text, Input, InputGroup, InputLeftElement, Icon,
 } from "@chakra-ui/react";
 import LoginModal from "../Pages/LoginModal";
 import SignupModal from "../Pages/SignupModal";
+import { FaSearch } from 'react-icons/fa';
 const Navbar = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
@@ -50,10 +51,18 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search..." />
-        <button id="search-button">Search</button>
-      </div>
+      <div className="searchBox"><InputGroup>
+        <InputLeftElement pointerEvents="auto">
+          <Icon as={FaSearch} color="gray.600" />
+        </InputLeftElement>
+        <Input
+          type="text"
+          placeholder="Search textbooks, questions"
+          borderRadius="full"
+          backgroundColor={"gray.100"}
+          _placeholder={{ color: 'gray.600', fontWeight: "semibold" }}
+        />
+      </InputGroup></div>
 
       <div className="navButton">
         <Button
