@@ -2,9 +2,11 @@ import { styled } from "styled-components";
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { Faq } from "../Components/ProductPage/Faq";
 import SearchBar from "../Components/SearchBar";
+import ProductTab from "../Components/ProductPage/ProductTab";
 
 
 const ProductPage = () => {
+
     return <DIV>
         <div className="topSec">
             <div className="topSecUpperBox">
@@ -21,7 +23,11 @@ const ProductPage = () => {
                 </div>
             </div>
             <div className="topSecLowerBox">
-                <SearchBar/>
+                <SearchBar />
+            </div>
+            <div className="productContainer">
+                <Text fontWeight={"bold"} fontSize={"25px"}>Browse by subject</Text>
+                <ProductTab/>
             </div>
         </div>
         <div className="container">
@@ -124,7 +130,6 @@ const ProductPage = () => {
 const DIV = styled.div`
 .topSec{
     width: 100%;
-    height: 430px;
     background-color: #f2f5ff;
     background-image: url("https://quizlet.com/_next/static/media/landing-page-header-jagged-lines-day.ea330eb6.svg");
     background-repeat: no-repeat;
@@ -154,6 +159,10 @@ const DIV = styled.div`
 .topSecLowerBox{
     width: 70%;
     margin: 40px auto;
+}
+.productContainer{
+    width: 70%;
+    margin: 60px auto;
 }
     .container {
     display: flex;
@@ -219,7 +228,74 @@ const DIV = styled.div`
   .innerFeedbackBox img{
     width: 15%;
     border-radius: 100%;
+    
   }
+
+   /* Media Queries for mobile screens */
+   @media screen and (max-width: 1023px) {
+    .topSecLowerBox,
+    .productContainer {
+        width: 90%;
+    }
+    .container {
+        flex-direction: column;
+        gap: 40px;
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .container-Right,
+    .container-Left {
+        width: 100%;
+    }
+    .feedbackSec {
+    width: 90%;
+  }
+
+  .innerFeedbackSec {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .feedbackBox {
+    width: 45%;
+  }
+}
+
+/* Media Query for mobile screens */
+@media screen and (max-width: 767px) {
+
+    .topSecLowerBox,
+    .productContainer {
+        width: 90%;
+        margin: 20px auto;
+    }
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .container-Right,
+    .container-Left {
+        width: 100%;
+    }
+    .feedbackSec {
+    width: 90%;
+    margin: 60px auto;
+  }
+
+  .innerFeedbackSec {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .feedbackBox {
+    width: 100%;
+  }
+}
 `
 
 export default ProductPage;

@@ -1,6 +1,8 @@
 import { Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react"
 import { useReducer } from "react";
 import { styled } from "styled-components"
+import { login } from "../../Redux/Login_Signup/action";
+import { useDispatch, useSelector } from "react-redux";
 
 let initialState = {
     email: "", password: ""
@@ -33,6 +35,7 @@ const reducer = (state, action) => {
 const LoginForm = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
+    const dispatcher=useDispatch();
 
     const handleChange = (e) => {
         dispatch({ type: e.target.name, payload: e.target.value })
@@ -40,14 +43,11 @@ const LoginForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatcher(login(state));
         dispatch({ type: "reset" });
     }
     return (
         <DIV>
-            {/* <div className="topSec">
-                <p>Signup</p>
-                <p>Login</p>
-            </div> */}
             <div className="formSec">
                 <form onSubmit={handleSubmit}>
                     <FormControl isRequired>
@@ -174,9 +174,6 @@ align-items: center;
     cursor: pointer;
     color: #f2c935;
 }
-
-
-
 
  `
 

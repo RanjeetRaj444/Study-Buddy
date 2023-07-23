@@ -1,59 +1,54 @@
-import {
-  AUTH_ERROR,
-  AUTH_REQUEST,
-  AUTH_SUCCESS,
-  LOGIN_SUCCESS,
-} from "./actionTypes";
+import { GET_AUTH_FAILURE, GET_AUTH_REQUEST, GET_AUTH_SUCCESS, LOGOUT_SUCCESS } from "./actionType"
 
 const initialState = {
   isLoading: false,
-  isAuth: false,
-  token: "",
-  tokenID: "",
+  isAuth: localStorage.getItem('isAuth')||"",
+  token: localStorage.getItem('token')||"",
   isError: false,
-  errorMessage: "",
 };
 
-export const reducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case AUTH_REQUEST: {
-      return {
-        ...state,
-        isLoading: true,
-        isError: false,
-        isAuth: false,
-      };
-    }
-    case AUTH_SUCCESS: {
-      return {
-        ...state,
-        isLoading: false,
-        tokenID: payload,
-        isError: false,
-        isAuth: false,
-      };
-    }
-    case LOGIN_SUCCESS: {
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        isAuth: true,
-        token: payload,
-      };
-    }
-    case AUTH_ERROR: {
-      return {
-        ...state,
-        isLoading: false,
-        isError: true,
-        isAuth: false,
-        errorMessage: payload,
-      };
-    }
+export const reducer = (state=initialState,{type,payload})=>{
+  switch(type){
+      case GET_AUTH_REQUEST : {
+          return {
+              ...state,
+              isLoading:true,
+              isAuth: false,
+              isError : false
+          }
+      }
+      case GET_AUTH_SUCCESS : {
+          localStorage.setItem("token", payload);
+          localStorage.setItem("isAuth", true);
+          return {
+              ...state,
+              isLoading:false,
+              token:localStorage.getItem('token'),
+              isAuth: localStorage.getItem('isAuth'),
+              isError : false
+          }
+      }
+      case GET_AUTH_FAILURE : {
+          localStorage.removeItem("token");
+          localStorage.removeItem("isAuth");
+          return {
+              ...state,
+              isLoading:false,
+              token:"",
+              isAuth: false,
+              isError : true
+          }
+      }
+      case LOGOUT_SUCCESS :{
+          localStorage.removeItem("token");
+          localStorage.removeItem("isAuth");
+          return {
+              token:"",
+              isAuth: false,
+              isError : false
+          }
+      }
 
-    default: {
-      return state;
-    }
+      default : return {state}
   }
-};
+}
