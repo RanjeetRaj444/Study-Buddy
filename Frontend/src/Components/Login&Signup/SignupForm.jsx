@@ -53,11 +53,10 @@ const SignupForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("https://studybuddy-backend-t2yy.onrender.com/users/register", state).then((res) => {
-            console.log(res.data)
+        axios.post("https://studybuddy-backend-t2yy.onrender.com/users/register", state).then((data) => {
+            console.log(data)
         })
         dispatch({ type: "reset" });
-
     }
     return (
         <DIV>

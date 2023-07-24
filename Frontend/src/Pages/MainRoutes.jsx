@@ -6,6 +6,7 @@ import Homepage from "../Components/Homepage";
 import SingleBooksPage from "./singleBooksPage";
 import SolutionPage from "./solutionPage";
 import ProductPage from "./ProductPage";
+import { useSelector } from "react-redux";
 const MainRoutes = () => {
   return (
     <div>
