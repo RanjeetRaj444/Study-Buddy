@@ -1,7 +1,7 @@
 import React from "react";
 // import Footer from "./Footer";
 import { Button, Heading, Text } from "@chakra-ui/react";
-import { styled } from "styled-components";
+// import { styled } from "styled-components";
 import image1 from "../Assets/landingPageImage2.avif";
 import learn from "../Assets/learn.svg";
 import smart from "../Assets/Smart Grading.svg";
@@ -9,16 +9,19 @@ import test from "../Assets/Test.svg";
 import solution from "../Assets/Solutions.svg";
 import step from "../Assets/Step by Step.svg";
 import Textbook from "../Assets/Textbook Solutions.svg";
+import { DIV } from "./LandingPages_Style";
+
+// import LandingPage from './LandingPage';
 const LandingPage = () => {
   return (
     <DIV image1={image1}>
       <div className="bodyPart">
         <div className="Top_containertion">
           <div className="topContainer">
-            <Heading fontSize={"42px"} fontWeight={"bold"}>
+            <Heading fontSize={"2rem"} fontWeight={"bold"}>
               The best digital flashcards and study tools
             </Heading>
-            <p style={{ fontWeight: "bold", fontSize: "22px" }}>
+            <p style={{ fontSize: "1rem" }}>
               Join over 60 million students using StudyBuddy's science-backed
               flashcards, practice tests and expert solutions to improve their
               grades and reach their goals.
@@ -29,10 +32,13 @@ const LandingPage = () => {
         <Heading className="heading">
           90% of students who use StudyBuddy report receiving higher grades
         </Heading>
+
         <div className="container">
           <div className="container-Left">
-            <Heading>Memorize faster for free</Heading>
-            <p>
+            <Heading className="container_Heading">
+              Memorize faster for free
+            </Heading>
+            <p className="container_Desc">
               Research shows that testing yourself with flashcards is more
               effective than rereading your notes. From math to medicine to
               modern languages, StudyBuddy is used by students in over 100
@@ -55,8 +61,10 @@ const LandingPage = () => {
             />
           </div>
           <div className="container-Right">
-            <Heading>Yesterday’s commute, today’s study session</Heading>
-            <p>
+            <Heading className="container_Heading">
+              Yesterday’s commute, today’s study session
+            </Heading>
+            <p className="container_Desc">
               Study anywhere — even offline — with our iOS and Android apps.
               Your progress syncs across your phone and computer.
             </p>
@@ -65,8 +73,10 @@ const LandingPage = () => {
         <div className="container">
           <div className="container-Left">
             <div>
-              <Heading>Be ready for test day with Learn and Test</Heading>
-              <p>
+              <Heading className="container_Heading">
+                Be ready for test day with Learn and Test
+              </Heading>
+              <p className="container_Desc">
                 Go beyond memorization with different question types designed to
                 help you really get it.
               </p>
@@ -121,8 +131,10 @@ const LandingPage = () => {
           </div>
           <div className="container-Left">
             <div>
-              <Heading>Get homework help with expert solutions</Heading>
-              <p>
+              <Heading className="container_Heading">
+                Get homework help with expert solutions
+              </Heading>
+              <p className="container_Desc">
                 StudyBuddy expert solutions show you step-by-step approaches to
                 solve tough problems. Find millions of solutions in your
                 subjects.
@@ -133,7 +145,7 @@ const LandingPage = () => {
                 <img src={solution} alt="" />
                 <div>
                   <Heading className="p">Practice with Learn</Heading>
-                  <p>
+                  <p className="container_Desc">
                     Get instant feedback while practicing with multiple choice,
                     true or false, written questions and more.
                   </p>
@@ -143,7 +155,7 @@ const LandingPage = () => {
                 <img src={step} alt="" />
                 <div>
                   <Heading className="p">Begin a Test</Heading>
-                  <p>
+                  <p className="container_Desc">
                     Get a sense of your study progress by taking a practice test
                     so you can feel prepared for your exam.
                   </p>
@@ -153,7 +165,7 @@ const LandingPage = () => {
                 <img src={Textbook} alt="" />
                 <div>
                   <Heading className="p">Get max results</Heading>
-                  <p>
+                  <p className="container_Desc">
                     94% of students who use Learn or Test say that Quizlet helps
                     them get better grades.
                   </p>
@@ -163,6 +175,7 @@ const LandingPage = () => {
             <Button className="seccondBtn">Find your answer</Button>
           </div>
         </div>
+
         <div className="bottomsec">
           <Heading className="secLast">
             What students love about StudyBuddy
@@ -173,7 +186,7 @@ const LandingPage = () => {
                 src="https://images.prismic.io/quizlet-prod/8568c5a7-2554-43c5-81bf-322169240769_Image+%2812%29.png?auto=compress,format&rect=0,4,310,228&w=286&h=210"
                 alt=""
               />
-              <p>
+              <p className="container_Desc">
                 “StudyBuddy has been supporting my success since high school.
                 Flashcards available on the go are single-handedly getting me
                 through university.”
@@ -184,7 +197,7 @@ const LandingPage = () => {
                 src="https://images.prismic.io/quizlet-prod/17a32b86-e009-47f6-acb0-cdc8e89d35c4_06Sydney+1.png?auto=compress,format&rect=0,10,930,683&w=286&h=210"
                 alt=""
               />
-              <Text>
+              <Text className="container_Desc">
                 “Learn mode is the best thing that's ever come out of
                 StudyBuddy. It shows you terms in a way that makes it easiest to
                 remember.”
@@ -195,7 +208,7 @@ const LandingPage = () => {
                 src="https://images.prismic.io/quizlet-prod/8160414d-ed6b-41ce-9654-18fc839916f6_oscar+and+owen+photo+for+us+homepage_fullsize+%281%29+1.png?auto=compress,format&rect=0,8,793,582&w=286&h=210"
                 alt=""
               />
-              <Text>
+              <Text className="container_Desc">
                 "All our friends use StudyBuddy. It's a fun way to study and we
                 feel more confident preparing for our midterms and finals."
               </Text>
@@ -211,7 +224,7 @@ const LandingPage = () => {
                 </Text>
                 <Heading>Empower your students</Heading>
               </div>
-              <p style={{ fontSize: "22px" }}>
+              <p className="container_Desc">
                 Engage and motivate all students with curriculum-based
                 materials, in-class activities and at-home study tools on any
                 topic. StudyBuddy is free for both you and your students to sign
@@ -228,115 +241,8 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="footerPart"></div>
     </DIV>
   );
 };
-const DIV = styled.div`
-  .Top_containertion {
-    width: 100%;
-    background-image: url(${(props) => props.image1});
-    background-size: 100%;
-    background-repeat: no-repeat;
-  }
-  .Top_containertion div {
-    width: 40%;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .topContainer {
-    height: 100%;
-    margin: 0px 200px;
-    padding: 200px 0px;
-    color: white;
-  }
-  .heading {
-    width: 80%;
-    margin: auto;
-    margin-top: 70px;
-    text-align: center;
-  }
-  .container {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-    margin: auto;
-    margin-top: 100px;
-  }
-  .container .container-Right,
-  .container-Left {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
-  .work {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-  }
-  .work p {
-    display: flex;
-    justify-content: flex-start;
-  }
-  .p {
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: flex-start;
-  }
-  .seccondBtn {
-    width: 50%;
-    background-color: #4d4dec;
-    color: white;
-  }
-  .seccondBtn:hover {
-    width: 50%;
-    background-color: #2b2bf6;
-    color: white;
-  }
-  .bottomsec {
-    margin-top: 110px;
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-  }
-  .secLast {
-    text-align: center;
-  }
-  .studentLove {
-    width: 70%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-  }
-  .studentLove div {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 30%;
-  }
-  .studentLove div p {
-    padding: 15px;
-  }
-  .bottom {
-    margin-top: 100px;
-    padding: 130px 2px;
-    background-color: #cacaeb;
-  }
-  .containers {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-    margin: auto;
-  }
-  .containers .container-Right,
-  .container-Left {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 70px;
-  }
-`;
+
 export default LandingPage;
