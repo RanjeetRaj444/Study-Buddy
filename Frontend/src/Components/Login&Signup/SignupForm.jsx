@@ -1,6 +1,7 @@
 import { Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react"
 import axios from "axios";
 import { useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components"
 
 let initialState = {
@@ -46,6 +47,7 @@ const reducer = (state, action) => {
 const SignupForm = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         dispatch({ type: e.target.name, payload: e.target.value })
@@ -54,8 +56,11 @@ const SignupForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post("https://studybuddy-backend-t2yy.onrender.com/users/register", state).then((res) => {
-            console.log(res.data)
+            alert(res.data.msg)
+            navigate('/')
+            
         })
+        .then((error)=>console.log(error))
         dispatch({ type: "reset" });
 
     }

@@ -1,8 +1,10 @@
 import { Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react"
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { styled } from "styled-components"
 import { login } from "../../Redux/Login_Signup/action";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import SignupModal from "../../Pages/SignupModal";
 
 let initialState = {
     email: "", password: ""
@@ -36,15 +38,22 @@ const LoginForm = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
     const dispatcher=useDispatch();
+    const navigate = useNavigate();
+    const [signupOpen, setSignupOpen] = useState(false);
 
     const handleChange = (e) => {
         dispatch({ type: e.target.name, payload: e.target.value })
     }
 
     const handleSubmit = (e) => {
+
         e.preventDefault();
-        dispatcher(login(state));
-        dispatch({ type: "reset" });
+        if(state.email==='admin@gmail.com'&& state.password==='admin') {
+                navigate('/admin/dashboard')
+        }else{
+            dispatcher(login(state));
+            dispatch({ type: "reset" });
+        }
     }
     return (
         <DIV>
@@ -91,8 +100,12 @@ const LoginForm = () => {
                 <Text>
                     New to StuddyBuddy?
                 </Text>
-                <Text>Create an account</Text>
+                <Text onClick={() => {
+                  setSignupOpen(true);
+                }}>Create an account</Text>
+                <SignupModal signupOpen={signupOpen} setSignupOpen={setSignupOpen} />
             </div>
+
         </DIV>
     )
 }
