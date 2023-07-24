@@ -5,6 +5,7 @@ import Admin from "./Admin/Admin";
 import Homepage from "../Components/Homepage";
 import SingleBooksPage from "./singleBooksPage";
 import SolutionPage from "./solutionPage";
+import ProductPage from "./ProductPage"
 const MainRoutes = () => {
   return (
     <div>
