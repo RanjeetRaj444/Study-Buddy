@@ -27,7 +27,6 @@ const SignupModal = ({ signupOpen, setSignupOpen }) => {
         <ModalCloseButton onClick={() => setSignupOpen(false)} />
         <LoginSignupBanner />
         <SignupForm/>
-          {/* <LoginForm/> */}
       </ModalOverlay>
     </Modal >
   </DIV >
