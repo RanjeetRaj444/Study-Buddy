@@ -28,11 +28,16 @@ import {} from "@chakra-ui/react";
 import LoginModal from "../Pages/LoginModal";
 import SignupModal from "../Pages/SignupModal";
 import { FaSearch } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { LOGOUT_SUCCESS } from "../Redux/Login_Signup/actionType";
 const Navbar = () => {
+  const isAuth =useSelector((store)=>store.authReducer.isAuth)
   const { isOpen, onOpen, onClose } = useDisclosure();
+  console.log("auth",isAuth)
 
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
+  const dispatch= useDispatch()
   return (
     <DIV className="navbar">
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -79,14 +84,13 @@ const Navbar = () => {
                           </PopoverBody>
                         </PopoverContent>
                       </Popover>
-                      <Link to={"/explanations"}>Expert solutions</Link>
                     </div>
                   </PopoverBody>
                 </PopoverContent>
               </Popover>
               <Link to={"/explanations"}>Expert solutions</Link>
             </div>
-            <div style={{ display: "flex", gap: "20px" }} className="navButton">
+            {!isAuth?<div style={{ display: "flex", gap: "20px" }} className="navButton">
               <Button
                 onClick={() => {
                   setLoginOpen(true);
@@ -101,7 +105,7 @@ const Navbar = () => {
               >
                 Signup
               </Button>
-            </div>
+            </div>:<Button onClick={()=>dispatch({type:LOGOUT_SUCCESS})}>logout</Button>}
           </DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -151,22 +155,22 @@ const Navbar = () => {
           />
         </InputGroup>
       </div>
-      <div className="navButton">
-        <Button
-          onClick={() => {
-            setLoginOpen(true);
-          }}
-        >
-          Login
-        </Button>
-        <Button
-          onClick={() => {
-            setSignupOpen(true);
-          }}
-        >
-          Signup
-        </Button>
-      </div>
+      {!isAuth?<div  className="navButton">
+              <Button
+                onClick={() => {
+                  setLoginOpen(true);
+                }}
+              >
+                Login
+              </Button>
+              <Button
+                onClick={() => {
+                  setSignupOpen(true);
+                }}
+              >
+                Signup
+              </Button>
+            </div>:<Button onClick={()=>dispatch({type:LOGOUT_SUCCESS})}>logout</Button>}
       <LoginModal loginOpen={loginOpen} setLoginOpen={setLoginOpen} />
       <SignupModal signupOpen={signupOpen} setSignupOpen={setSignupOpen} />
     </DIV>

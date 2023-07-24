@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_AUTH_FAILURE, GET_AUTH_REQUEST, GET_AUTH_SUCCESS, LOGOUT_SUCCESS } from "../actionType"
+import { GET_AUTH_FAILURE, GET_AUTH_REQUEST, GET_AUTH_SUCCESS, LOGOUT_SUCCESS } from "./actionType"
 
 
 export const login = (userData) => (dispatch) => {
@@ -7,7 +7,9 @@ export const login = (userData) => (dispatch) => {
 
   return axios.post("https://studybuddy-backend-t2yy.onrender.com/users/login", userData).then((res) => {
     dispatch({ type: GET_AUTH_SUCCESS, payload: res.data.token })
+    alert(res.data.msg)
   }).catch((err) => {
+    console.log(err)
     dispatch({ type: GET_AUTH_FAILURE, payload: err.message })
   })
 }

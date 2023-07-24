@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import Product from './Product'
 import Users from './Users'
@@ -7,6 +7,7 @@ import UserLog from './UserLog'
 import style from './Admin.module.css'
 
 export default function Admin() {
+    const Navigate= useNavigate()
     
     useEffect(()=>{
         const homePageNavbar=document.getElementsByClassName('navbar')
@@ -20,21 +21,13 @@ export default function Admin() {
         }
       },[])
 
-    useEffect(()=>{
-        const homePageNavbar=document.getElementById('homePageNavbar')
-        homePageNavbar.style.display='none'
-    
-        return ()=>{
-          homePageNavbar.style.display='block'
-        }
-      },[])
 
     return (
         <div className={style.adminPageDiv}>
             <div className={style.homeDiv}>
                 <nav className={style.NavDiv}>
                     <div className={style.logoDiv}>
-                        <img src="https://www.studybuddy.me/site2/img/studybuddy_logo.png" alt="Study Buddy" />
+                        <img onClick={()=>Navigate('/')}src="https://www.studybuddy.me/site2/img/studybuddy_logo.png" alt="Study Buddy" />
                     </div>
                     <NavLink className={({ isActive }) => isActive ? `${style.Active}` : `${style.notActive}`} to="/admin/dashboard"><span className="material-symbols-outlined">home</span><span>Dashboard</span></NavLink>
                     <NavLink className={({ isActive }) => isActive ? `${style.Active}` : `${style.notActive}`} to="/admin/product"><span className="material-symbols-outlined">inventory</span><span>Product</span></NavLink>
