@@ -80,7 +80,7 @@ const SingleBooksPage = () => {
                           <Text
                             onClick={() => setColor(ind)}
                             style={{
-                              backgroundColor: color === ind ? "red" : "white",
+                              backgroundColor: color === ind ? "skyblue" : "white",
                             }}
                             className="chaptername"
                             key={ind}

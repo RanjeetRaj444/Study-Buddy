@@ -1,35 +1,3 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
-// import { getOneBook } from "../Redux/Books/action";
-// import "./solutionPage.module.css"
-
-// const SolutionPage = () => {
-//   const id = useParams();
-//   const dispatch = useDispatch();
-//   const data = useSelector((store) => store.singleData.data);
-//   console.log(data);
-//   useEffect(() => {
-//     dispatch(getOneBook(id.id));
-//   }, []);
-//   return  <div className="solution-container">
-//   <h2 className="solution-title">Welcome to Solution</h2>
-//   <div className="book-details">
-//     <img className="book-image" src={data.image} alt="" />
-//     <div className="book-info">
-//       <h1 className="book-author">{data.author}</h1>
-//       <p className="book-solutionNo">Solution No: {data.solution_No}</p>
-//       <h3 className="book-title">{data.title}</h3>
-//       <h1 className="book-category">Category: {data.category}</h1>
-//       <p className="book-description">{data.description}</p>
-//       <p className="book-exercise">Exercise: {data.exercise}</p>
-//     </div>
-//   </div>
-// </div>
-// };
-
-// export default SolutionPage;
-
 // // author: "James Brown";
 // // category: "physics";
 // // chapter: (2)[("Chapter 1: Special Relativity", "Chapter 2: Quantum Mechanics")];
@@ -43,11 +11,6 @@
 // // title: "Modern Physics";
 // // _id: "64bcc01032b082bdf7e04009";
 
-
-
-
-
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -56,7 +19,7 @@ import styled from "styled-components"; // Import styled-components
 
 const SolutionContainer = styled.div`
   max-width: 800px;
-  
+
   border: 1px solid red;
   padding: 20px;
   background-color: #e5e8e7;
@@ -93,7 +56,7 @@ const BookImage = styled.img`
   height: 250px;
   object-fit: cover;
   margin-right: 40px;
-  
+
   border-radius: 5px;
   border: 2px solid #007bff;
 `;
@@ -128,7 +91,6 @@ const BookCategory = styled.h1`
   font-weight: bold;
   margin-bottom: 5px;
   color: #585858;
-
 `;
 
 const BookDescription = styled.p`
@@ -139,12 +101,6 @@ const BookDescription = styled.p`
   margin-left: 20px;
 `;
 
-const BookExercise = styled.p`
-  font-size: 17px;
-  color: #444;
-  padding-left: 10px;
-  margin-left: 10px;
-`;
 
 const SolutionPage = () => {
   const id = useParams();
@@ -161,24 +117,31 @@ const SolutionPage = () => {
   }
 
   return (
-    <div style={{backgroundColor:"#e5e8e7"}}>
+    <div style={{ backgroundColor: "#e5e8e7" }}>
       <SolutionContainer>
-      <SolutionTitle >Welcome to Solution</SolutionTitle>
-      <BookDetails>
-        <BookImage src={data.image} alt="" style={{marginLeft: "5px"}}/>
-        <BookInfo>
-          <BookAuthor>{data.author}</BookAuthor>
-          <BookSolutionNo>Solution No: {data.solution_No}</BookSolutionNo>
-          <BookTitle>{data.title}</BookTitle>
-          <BookCategory>Category: {data.category}</BookCategory>
-        </BookInfo>
-      </BookDetails>
-      <div style={{marginRight: "30px",borderRadius: "20px", marginTop: "30px", backgroundColor: "white", paddingTop: "30px", paddingBottom: "30px"}}>
-      <BookDescription>{data.description}</BookDescription>
-      <BookExercise>Exercise: {data.exercise}</BookExercise>
-      </div>
-      
-    </SolutionContainer>
+        <SolutionTitle>Welcome to Solution</SolutionTitle>
+        <BookDetails>
+          <BookImage src={data.image} alt="" style={{ marginLeft: "5px" }} />
+          <BookInfo>
+            <BookAuthor>{data.author}</BookAuthor>
+            <BookSolutionNo>Solution No: {data.solution_No}</BookSolutionNo>
+            <BookTitle>{data.title}</BookTitle>
+            <BookCategory>Category: {data.category}</BookCategory>
+          </BookInfo>
+        </BookDetails>
+        <div
+          style={{
+            marginRight: "30px",
+            borderRadius: "20px",
+            marginTop: "30px",
+            backgroundColor: "white",
+            paddingTop: "30px",
+            paddingBottom: "30px",
+          }}
+        >
+          <BookDescription>{data.solution}</BookDescription>
+        </div>
+      </SolutionContainer>
     </div>
   );
 };
