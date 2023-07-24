@@ -175,6 +175,40 @@ const DIV = styled.div`
     background-color: #b7dcf1;
     border-radius: 20px;
   }
+  @media only screen and (max-width: 1100px) {
+  }
+  @media only screen and (max-width: 900px) and (min-width: 750px) {
+    .excersizeContainer {
+      width: 100%;
+    }
+    .mid_container {
+      width: 100%;
+    }
+    .detailsContainer .textContainer {
+      width: 100%;
+    }
+    .detailsContainer .imageContainer {
+    width: 100%;
+  }
+  }
+  @media only screen and (max-width: 750px) {
+    .detailsContainer {
+    display: flex;
+ flex-direction: column;
+  }
+    .excersizeContainer {
+      width: 100%;
+    }
+    .mid_container {
+      width: 100%;
+    }
+    .detailsContainer .textContainer {
+      width: 100%;
+    }
+    .detailsContainer .imageContainer {
+    width: 100%;
+  }
+  }
 `;
 
 export default Homepage;

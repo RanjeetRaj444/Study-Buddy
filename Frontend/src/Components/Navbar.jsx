@@ -10,21 +10,108 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   Button,
-  Text, Input, InputGroup, InputLeftElement, Icon,
+  Text,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Icon,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
+import {} from "@chakra-ui/react";
 import LoginModal from "../Pages/LoginModal";
 import SignupModal from "../Pages/SignupModal";
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch } from "react-icons/fa";
 const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
   return (
     <DIV className="navbar">
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Menu</DrawerHeader>
+
+          <DrawerBody display={"flex"} flexDirection={"column"} gap={"20px"}>
+            <div
+              style={{ display: "flex", gap: "20px", flexDirection: "column" }}
+              className="navigate"
+            >
+              <Link to={"/"}>Home</Link>
+              <Popover>
+                <PopoverTrigger>
+                  <Text>Subjects</Text>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    <div className="navigate">
+                      <Link to={"/"}>Home</Link>
+                      <Popover>
+                        <PopoverTrigger>
+                          <Text>Subjects</Text>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <PopoverArrow />
+                          <PopoverCloseButton />
+                          <PopoverBody>
+                            <div className="drawer">
+                              <Text className="option">Exams</Text>
+                              <Text className="option">
+                                Arts and Humanities
+                              </Text>
+                              <Text className="option">Languages</Text>
+                              <Text className="option">Math</Text>
+                              <Text className="option">Science</Text>
+                              <Text className="option">Social Science</Text>
+                              <Text className="option">Other</Text>
+                            </div>
+                          </PopoverBody>
+                        </PopoverContent>
+                      </Popover>
+                      <Link to={"/explanations"}>Expert solutions</Link>
+                    </div>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+              <Link to={"/explanations"}>Expert solutions</Link>
+            </div>
+            <div style={{ display: "flex", gap: "20px" }} className="navButton">
+              <Button
+                onClick={() => {
+                  setLoginOpen(true);
+                }}
+              >
+                Login
+              </Button>
+              <Button
+                onClick={() => {
+                  setSignupOpen(true);
+                }}
+              >
+                Signup
+              </Button>
+            </div>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
       <div className="left">
         <div style={{ width: "22%" }}>
           <img src={logo} alt="images" />
         </div>
-
+        <Button className="hambergerButton" colorScheme="teal" onClick={onOpen}>
+          Open
+        </Button>
         <div className="navigate">
           <Link to={"/"}>Home</Link>
           <Popover>
@@ -50,20 +137,20 @@ const Navbar = () => {
           <Link to={"/explanations"}>Expert solutions</Link>
         </div>
       </div>
-
-      <div className="searchBox"><InputGroup>
-        <InputLeftElement pointerEvents="auto">
-          <Icon as={FaSearch} color="gray.600" />
-        </InputLeftElement>
-        <Input
-          type="text"
-          placeholder="Search textbooks, questions"
-          borderRadius="full"
-          backgroundColor={"gray.100"}
-          _placeholder={{ color: 'gray.600', fontWeight: "semibold" }}
-        />
-      </InputGroup></div>
-
+      <div className="searchBox">
+        <InputGroup>
+          <InputLeftElement pointerEvents="auto">
+            <Icon as={FaSearch} color="gray.600" />
+          </InputLeftElement>
+          <Input
+            type="text"
+            placeholder="Search textbooks, questions"
+            borderRadius="full"
+            backgroundColor={"gray.100"}
+            _placeholder={{ color: "gray.600", fontWeight: "semibold" }}
+          />
+        </InputGroup>
+      </div>
       <div className="navButton">
         <Button
           onClick={() => {
@@ -89,8 +176,7 @@ const Navbar = () => {
 const DIV = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0px 12px ;
-  /* border: 1px solid grey; */
+  padding: 0px 12px;
   align-items: center;
   position: sticky;
   top: 0px;
@@ -106,44 +192,39 @@ const DIV = styled.div`
     width: 12.5%;
     display: flex;
     justify-content: space-between;
+    gap: 20px;
   }
   .navigate {
     width: 60%;
     display: flex;
     justify-content: space-between;
   }
-  .drawer {
-  }
   .option {
     padding: 10px;
+    border-radius: 12px;
   }
   .option:hover {
     background-color: #aaa7a7;
   }
-
-  .search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .hambergerButton {
+    display: none;
   }
-
-  #search-input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  #search-button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  #search-button:hover {
-    background-color: #0056b3;
+  @media only screen and (max-width: 1100px) {
+    .left {
+      justify-content: flex-start;
+      gap: 20px;
+      /* display: ; */
+    }
+    .hambergerButton {
+      display: block;
+    }
+    .navigate {
+      display: none;
+    }
+    .navButton {
+      width: 100%;
+      display: none;
+    }
   }
 `;
 

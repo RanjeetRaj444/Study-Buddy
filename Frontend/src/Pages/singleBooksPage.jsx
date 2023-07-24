@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { styled } from "styled-components";
 import { MdVerified } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import {
   Accordion,
   AccordionItem,
@@ -13,6 +14,8 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { getOneBook } from "../Redux/Books/action";
 const SingleBooksPage = () => {
+  const [color, setColor] = React.useState(0);
+
   const Id = useParams();
   console.log(Id.id);
   const dispatch = useDispatch();
@@ -26,7 +29,7 @@ const SingleBooksPage = () => {
     <DIV>
       <div className="mainDiv">
         <Text color={"gray"} fontWeight={"bold"}>
-          Science / Chemistry
+          Science / {data.category}
         </Text>
         <div className="bookDetailsContainer">
           <div className="imgContainer">
@@ -74,7 +77,16 @@ const SingleBooksPage = () => {
                     <div>
                       {data.exercise &&
                         data.exercise.map((ele, ind) => (
-                          <Text key={ind}>{ele}</Text>
+                          <Text
+                            onClick={() => setColor(ind)}
+                            style={{
+                              backgroundColor: color === ind ? "red" : "white",
+                            }}
+                            className="chaptername"
+                            key={ind}
+                          >
+                            {ele}
+                          </Text>
                         ))}
                     </div>
                     <div>
@@ -122,7 +134,6 @@ const DIV = styled.div`
   }
 
   .bookDetailsContainer {
-    /* padding:30px; */
     display: flex;
     align-items: center;
     gap: 25px;
@@ -167,9 +178,20 @@ const DIV = styled.div`
   .excersize {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
   }
   .excersize div {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 2px solid;
+    padding: 12px;
+  }
+  .chaptername {
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 `;
 

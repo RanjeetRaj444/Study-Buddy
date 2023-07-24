@@ -10,11 +10,9 @@ const MainRoutes = () => {
   return (
     <div>
       <Routes>
-
-{/* //         <Route path="/" element={<LandingPage />} /> */}
-        <Route path="/" element={<Homepage />} />
-         <Route path="/explanations" element={<ProductPage/>} />
-
+        {/* //         <Route path="/" element={<LandingPage />} /> */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/explanations" element={<ProductPage />} />
         <Route path="/admin/*" element={<Admin />} />
         <Route path="/books/:id" element={<SingleBooksPage />} />
         <Route path="/solution/:id" element={<SolutionPage />} />

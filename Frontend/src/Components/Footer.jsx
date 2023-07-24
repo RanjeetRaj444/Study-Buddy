@@ -1,10 +1,11 @@
 import { Select, Text } from "@chakra-ui/react";
 import React from "react";
-import { styled } from "styled-components";
+// import { styled } from "styled-components";
 import { FaYoutube } from "react-icons/fa";
 import { BsTwitter, BsFacebook, BsInstagram, BsTiktok } from "react-icons/bs";
 import image from "../Assets/image1.png";
 import { Link } from "react-router-dom";
+import { DIV } from "./Footers_Style";
 const Footer = () => {
   return (
     <DIV className="footer">
@@ -117,35 +118,4 @@ const Footer = () => {
   );
 };
 
-const DIV = styled.div`
-  .top {
-    display: flex;
-    justify-content: space-around;
-    /* margin-top: 60px; */
-    padding: 30px;
-  }
-  .container p {
-    display: flex;
-    justify-content: flex-start;
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .footerBotom {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px;
-  }
-  .icons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .iconContainer {
-    display: flex;
-    gap: 25px;
-  }
-`;
 export default Footer;
