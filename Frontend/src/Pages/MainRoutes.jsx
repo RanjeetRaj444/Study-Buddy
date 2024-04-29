@@ -10,19 +10,24 @@ import ProductPage from "./ProductPage";
 import { useSelector } from "react-redux";
 
 const MainRoutes = () => {
-  const isAuth = useSelector((store) => store.authReducer.isAuth);
-  return (
-    <div>
-      <Routes>
-        {/* //         <Route path="/" element={<LandingPage />} /> */}
-        <Route path="/" element={isAuth ? <Homepage /> : <LandingPage />} />
-        <Route path="/explanations" element={<ProductPage />} />
-        <Route path="/admin/*" element={<Admin />} />
-        <Route path="/books/:id" element={<SingleBooksPage />} />
-        <Route path="/solution/:id" element={<SolutionPage />} />
-      </Routes>
-    </div>
-  );
+	const isAuth = useSelector((store) => store.authReducer.isAuth);
+	let token = useSelector((store) => store.authReducer.token);
+	console.log(token);
+	return (
+		<div>
+			<Routes>
+				{/* //         <Route path="/" element={<LandingPage />} /> */}
+				<Route
+					path="/"
+					element={token !== undefined ? <Homepage /> : <LandingPage />}
+				/>
+				<Route path="/explanations" element={<ProductPage />} />
+				<Route path="/admin/*" element={<Admin />} />
+				<Route path="/books/:id" element={<SingleBooksPage />} />
+				<Route path="/solution/:id" element={<SolutionPage />} />
+			</Routes>
+		</div>
+	);
 };
 
 export default MainRoutes;

@@ -77,24 +77,24 @@ const ProductPage = () => {
                 <img src="https://quizlet.com/_next/static/media/TikTokIcon.85c08241.svg" alt="" />
                 <p>What students are saying about StuddyBuddy</p>
             </h2>
-            <div class="innerFeedbackSec">
-                <div class="feedbackBox">
+            <div className="innerFeedbackSec">
+                <div className="feedbackBox">
                     <p>I got a 94 on my bio final thanks to StuddyBuddy 💙</p>
-                    <div class="innerFeedbackBox">
+                    <div className="innerFeedbackBox">
                         <img src="https://quizlet.com/_next/static/media/testimonials_alliecat1987.a1b1e470.png" alt="" />
                         <p>Alliecat1987</p>
                     </div>
                 </div>
-                <div class="feedbackBox">
+                <div className="feedbackBox">
                     <p>StuddyBuddy got me through high school and the first semester of college. Let's continue this trend 💪</p>
-                    <div class="innerFeedbackBox">
+                    <div className="innerFeedbackBox">
                         <img src="https://quizlet.com/_next/static/media/testimonials_faithresler.3f3a3acc.png" alt="" />
                         <p>Faith_resler</p>
                     </div>
                 </div>
-                <div class="feedbackBox">
+                <div className="feedbackBox">
                     <p>The only way I pass my classes is because of StuddyBuddy</p>
-                    <div class="innerFeedbackBox">
+                    <div className="innerFeedbackBox">
                         <img src="https://quizlet.com/_next/static/media/testimonials_makethisacctfamous.4c6c8a21.png" alt="" />
                         <p>Makethisacctfamous</p>
                     </div>
