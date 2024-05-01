@@ -20,7 +20,7 @@ The STUDY-BUDDY is a modern educational platform for exploring answers for quest
 
 - User authentication with api servie.
 - Browse a wide variety of answers for question.
-- <del>Responsive design for mobile and desktop and others screen.</del>
+- Responsive design for mobile , desktop and others screen.
 
 ## Installation
 
