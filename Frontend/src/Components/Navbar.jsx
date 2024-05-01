@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../Assets/studybuddy_logo.png";
+import { BsLayoutTextSidebar } from "react-icons/bs";
 import {
 	Popover,
 	PopoverTrigger,
@@ -45,6 +46,9 @@ const Navbar = () => {
 					<DrawerHeader>Menu</DrawerHeader>
 
 					<DrawerBody display={"flex"} flexDirection={"column"} gap={"20px"}>
+						<div style={{ width: "22%" }}>
+							<img src={logo} alt="images" />
+						</div>
 						<div
 							style={{ display: "flex", gap: "20px", flexDirection: "column" }}
 							className="navigate"
@@ -59,10 +63,12 @@ const Navbar = () => {
 									<PopoverCloseButton />
 									<PopoverBody>
 										<div className="navigate">
-											<Link to={"/"}>Home</Link>
+											<Link className="links" to={"/"}>
+												Home
+											</Link>
 											<Popover>
 												<PopoverTrigger>
-													<Text>Subjects</Text>
+													<Text className="links">Subjects</Text>
 												</PopoverTrigger>
 												<PopoverContent>
 													<PopoverArrow />
@@ -86,7 +92,9 @@ const Navbar = () => {
 									</PopoverBody>
 								</PopoverContent>
 							</Popover>
-							<Link to={"/explanations"}>Expert solutions</Link>
+							<Link className="links" to={"/explanations"}>
+								Expert solutions
+							</Link>
 						</div>
 						{token === undefined ? (
 							<div
@@ -118,17 +126,19 @@ const Navbar = () => {
 				</DrawerContent>
 			</Drawer>
 			<div className="left">
-				<div style={{ width: "22%" }}>
+				<div className="Logo" style={{ width: "22%" }}>
 					<img src={logo} alt="images" />
 				</div>
-				<Button className="hambergerButton" colorScheme="teal" onClick={onOpen}>
-					Open
+				<Button className="hambergerButton" colorScheme="blue" onClick={onOpen}>
+					<BsLayoutTextSidebar />
 				</Button>
 				<div className="navigate">
-					<Link to={"/"}>Home</Link>
+					<Link className="links" to={"/"}>
+						Home
+					</Link>
 					<Popover>
 						<PopoverTrigger>
-							<Text>Subjects</Text>
+							<Text className="links">Subjects</Text>
 						</PopoverTrigger>
 						<PopoverContent>
 							<PopoverArrow />
@@ -146,7 +156,9 @@ const Navbar = () => {
 							</PopoverBody>
 						</PopoverContent>
 					</Popover>
-					<Link to={"/explanations"}>Expert solutions</Link>
+					<Link className="links" to={"/explanations"}>
+						Expert solutions
+					</Link>
 				</div>
 			</div>
 			<div className="searchBox">
@@ -174,6 +186,7 @@ const Navbar = () => {
 						Login
 					</Button>
 					<Button
+					className="signup_btn"
 						onClick={() => {
 							setSignupOpen(true);
 							setLoginOpen(false);
@@ -203,6 +216,7 @@ const DIV = styled.div`
 	top: 0px;
 	z-index: 1;
 	background-color: white;
+	padding: 0.5rem;
 	.left {
 		width: 35%;
 		display: flex;
@@ -216,13 +230,23 @@ const DIV = styled.div`
 		gap: 20px;
 	}
 	.navigate {
-		width: 60%;
+		padding: 0.5rem 0.5rem;
+		width: 75%;
 		display: flex;
 		justify-content: space-between;
+		font-weight: 900;
 	}
 	.option {
 		padding: 10px;
 		border-radius: 12px;
+	}
+	.links {
+		padding: 10px;
+		border-radius: 12px;
+	}
+	.links:hover {
+		color: #fff;
+		background-color: #000;
 	}
 	.option:hover {
 		background-color: #aaa7a7;
@@ -232,20 +256,80 @@ const DIV = styled.div`
 	}
 	@media only screen and (max-width: 1100px) {
 		.left {
-			justify-content: flex-start;
+			justify-content: space-between;
 			gap: 20px;
 			/* display: ; */
+		}
+		/* .hambergerButton {
+			display: block;
+		} */
+		.navigate {
+			/* display: none;/ */
+			font-weight: bold;
+			font-size: 0.8rem;
+		}
+		/* .navButton {
+			width: 80%;
+			display: none;
+		} */
+	}
+	@media only screen and (max-width: 1024px) {
+		.signup_btn {
+			/* width: 100%; */
+			display: none;
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		/* .left {
+			justify-content: flex-start;
+			gap: 20px;
+		} */
+		justify-content: space-around;
+		.hambergerButton {
+			display: block;
+		}
+		.Logo,
+		.navigate {
+			display: none;
+		}
+		/* .navButton {
+			width: 100%;
+			display: none;
+		} */
+	}
+	@media only screen and (max-width: 425px) {
+		/* .left {
+			justify-content: flex-start;
+			gap: 20px;
 		}
 		.hambergerButton {
 			display: block;
 		}
+		.Logo,
 		.navigate {
 			display: none;
 		}
 		.navButton {
 			width: 100%;
 			display: none;
+		} */
+	}
+	@media only screen and (max-width: 375px) {
+		/* .left {
+			justify-content: flex-start;
+			gap: 20px;
 		}
+		.hambergerButton {
+			display: block;
+		}
+		.Logo,
+		.navigate {
+			display: none;
+		}
+		.navButton {
+			width: 100%;
+			display: none;
+		} */
 	}
 `;
 

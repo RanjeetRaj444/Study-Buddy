@@ -23,7 +23,7 @@ export const getOneBook = (id) => (dispatch) => {
     .get(`https://studybuddy-backend-t2yy.onrender.com/books/getOneData/${id}`)
     .then((data) => {
       dispatch({ type: DATA_SUCCESS, payload: data.data });
-      console.log(data.data)
+      // console.log(data.data)
     })
     .catch((err) => {
       dispatch({ type: DATA_ERROR });

@@ -39,7 +39,7 @@ const ProductTab = () => {
 	return (
 		<div>
 			<Tabs mt={"20px"}>
-				<TabList>
+				<TabList className="tabs" style={{overflow:"auto"}}>
 					<Tab>Physics</Tab>
 					<Tab>Chemistry</Tab>
 					<Tab>Calculus</Tab>
@@ -49,8 +49,7 @@ const ProductTab = () => {
 					<Tab>Languages</Tab>
 					<Tab>Business</Tab>
 				</TabList>
-
-				<TabPanels mt={"15px"} pb={"50px"}>
+				<TabPanels mt={"15px"} pb={"50px"} >
 					<TabPanel>
 						{data.length > 0 ? (
 							<Grid
