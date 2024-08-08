@@ -55,10 +55,14 @@ const LoginForm = ({ onClose }) => {
 	};
 
 	const handleSubmit = (e) => {
+		console.log("login");
+		
 		e.preventDefault();
 		if (state.email === "admin@gmail.com" && state.password === "admin") {
 			navigate("/admin/dashboard");
 		} else {
+			console.log(state);
+			
 			dispatcher(login(state, toast));
 			dispatch({ type: "reset" });
 		}

@@ -12,7 +12,7 @@ export const login = (userData, toast) => (dispatch) => {
 		.post("https://studybuddy-backend-t2yy.onrender.com/users/login", userData)
 		.then((res) => {
 			dispatch({ type: GET_AUTH_SUCCESS, payload: res.data.token });
-      console.log(res.data);
+			console.log(res.data);
 			toast({
 				title: "User login.",
 				description: res.data.msg,

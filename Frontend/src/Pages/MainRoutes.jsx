@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 const MainRoutes = () => {
 	const isAuth = useSelector((store) => store.authReducer.isAuth);
 	let token = useSelector((store) => store.authReducer.token);
-	console.log(token);
+	// console.log(token);
 	return (
 		<div>
 			<Routes>
