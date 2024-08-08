@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 const LoginModal = ({ loginOpen, setLoginOpen }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const isAuth = useSelector((store) => store.authReducer.isAuth);
-	console.log(isAuth);
+	// console.log(isAuth);
 	useEffect(() => {
 		if (isAuth) {
 			setLoginOpen(false);
