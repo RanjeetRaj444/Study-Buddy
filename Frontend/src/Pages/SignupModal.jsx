@@ -4,13 +4,13 @@ import {
 	ModalCloseButton,
 	useDisclosure,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import LoginSignupBanner from "../Components/Login&Signup/LoginSignupBanner";
 
 import { styled } from "styled-components";
 import SignupForm from "../Components/Login&Signup/SignupForm";
 
-const SignupModal = ({ signupOpen, setSignupOpen }) => {
+const SignupModal = ({setLoginOpen, signupOpen, setSignupOpen }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	
 	return (
@@ -24,7 +24,7 @@ const SignupModal = ({ signupOpen, setSignupOpen }) => {
 				>
 					<ModalCloseButton onClick={() => setSignupOpen(false)} />
 					<LoginSignupBanner />
-					<SignupForm />
+					<SignupForm setSignupOpen={setSignupOpen}/>
 				</ModalOverlay>
 			</Modal>
 		</DIV>
