@@ -39,6 +39,7 @@ export const reducer = (state = initialState, { type, payload }) => {
         isError: true,
       };
     case LOGOUT_SUCCESS:
+      localStorage.removeItem("token");
       return {
         ...state,
         isLoading: false, // Add isLoading to maintain consistency
