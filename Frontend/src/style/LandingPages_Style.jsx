@@ -1,7 +1,6 @@
+import { styled } from "styled-components";
 
-import { styled } from 'styled-components';
-
-  export const DIV = styled.div`
+export const DIV = styled.div`
   box-sizing: border-box;
   .Top_containertion {
     background-image: url(${(props) => props.image1});
@@ -127,8 +126,8 @@ import { styled } from 'styled-components';
       gap: 10px;
     }
     .seccondBtn {
-    width: 100%;
-  }
+      width: 100%;
+    }
   }
   @media only screen and (max-width: 900px) and (min-width: 750px) {
     .topContainer {
@@ -139,8 +138,8 @@ import { styled } from 'styled-components';
       gap: 20px;
     }
     .seccondBtn {
-    width: 100%;
-  }
+      width: 100%;
+    }
   }
   @media only screen and (max-width: 750px) {
     .topContainer {
@@ -189,19 +188,18 @@ import { styled } from 'styled-components';
       width: 100%;
     }
     .seccondBtn {
-    width: 100%;
-  }
-  .containers {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .containers .container-Right,
-  .container-Left {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-  }
+      width: 100%;
+    }
+    .containers {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .containers .container-Right,
+    .container-Left {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 `;

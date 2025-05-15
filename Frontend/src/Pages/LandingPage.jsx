@@ -9,7 +9,7 @@ import test from "../Assets/Test.svg";
 import solution from "../Assets/Solutions.svg";
 import step from "../Assets/Step by Step.svg";
 import Textbook from "../Assets/Textbook Solutions.svg";
-import { DIV } from "./LandingPages_Style";
+import { DIV } from "../style/LandingPages_Style.jsx";
 
 // import LandingPage from './LandingPage';
 const LandingPage = () => {

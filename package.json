@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "react-google-charts": "^4.0.0",
-    "recharts": "^2.7.2"
-  }
-}

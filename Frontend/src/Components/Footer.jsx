@@ -1,11 +1,9 @@
 import { Select, Text } from "@chakra-ui/react";
-import React from "react";
-// import { styled } from "styled-components";
 import { FaYoutube } from "react-icons/fa";
 import { BsTwitter, BsFacebook, BsInstagram, BsTiktok } from "react-icons/bs";
 import image from "../Assets/image1.png";
 import { Link } from "react-router-dom";
-import { DIV } from "./Footers_Style";
+import { DIV } from "../style/Footers_Style";
 const Footer = () => {
   return (
     <DIV className="footer">
