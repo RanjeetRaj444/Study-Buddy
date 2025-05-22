@@ -24,18 +24,128 @@ import {
   DrawerCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import {} from "@chakra-ui/react";
 import LoginModal from "../Pages/LoginModal";
 import SignupModal from "../Pages/SignupModal";
 import { FaSearch } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Profile from "./Profile";
+
+const subjects = [
+  "Exams",
+  "Arts and Humanities",
+  "Languages",
+  "Math",
+  {
+    label: "Science",
+    sub: ["Physics", "Chemistry", "Biology", "Computer Science", "Other"],
+  },
+  "Social Science",
+  "Other",
+];
+
+function SubjectsPopover({ isDrawer }) {
+  return (
+    <Popover placement="bottom-start" trigger="hover">
+      <PopoverTrigger>
+        <Text className="links" tabIndex={0} style={{ cursor: "pointer" }}>
+          Subjects
+        </Text>
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverArrow />
+        <PopoverCloseButton />
+        <PopoverBody>
+          <div className={isDrawer ? "drawer" : "drawer"}>
+            {subjects.map((item, idx) =>
+              typeof item === "string" ? (
+                <Text className="option" key={item}>
+                  {item}
+                </Text>
+              ) : (
+                <Popover
+                  trigger="hover"
+                  placement="right-start"
+                  key={item.label}
+                >
+                  <PopoverTrigger>
+                    <Text
+                      className="option"
+                      tabIndex={0}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {item.label}
+                    </Text>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverBody>
+                      <div className="drawer">
+                        {item.sub.map((sub) => (
+                          <Text className="option" key={sub}>
+                            {sub}
+                          </Text>
+                        ))}
+                      </div>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+              )
+            )}
+          </div>
+        </PopoverBody>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+function NavigationLinks({ isDrawer }) {
+  return (
+    <div className={isDrawer ? "navigate" : "navigate"}>
+      <Link className="links" to="/">
+        Home
+      </Link>
+      <SubjectsPopover isDrawer={isDrawer} />
+      <Link className="links" to="/explanations">
+        Expert solutions
+      </Link>
+    </div>
+  );
+}
+
+function AuthButtons({ setLoginOpen, setSignupOpen, isDrawer }) {
+  return (
+    <div className="navButton">
+      <Button
+        colorScheme="blue"
+        onClick={() => {
+          setLoginOpen(true);
+          setSignupOpen && setSignupOpen(false);
+        }}
+      >
+        Login
+      </Button>
+      <Button
+        colorScheme="yellow"
+        className="signup_btn"
+        onClick={() => {
+          setSignupOpen(true);
+          setLoginOpen && setLoginOpen(false);
+        }}
+      >
+        Signup
+      </Button>
+    </div>
+  );
+}
+
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  let token = useSelector((store) => store.auth.token);
+  const token = useSelector((store) => store.auth.token);
 
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
+
   return (
     <DIV className="navbar">
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -43,87 +153,25 @@ const Navbar = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>Menu</DrawerHeader>
-
           <DrawerBody display={"flex"} flexDirection={"column"} gap={"20px"}>
-            <div style={{ width: "22%" }}>
+            <div className="Logo" style={{ width: "22%" }}>
               <img src={logo} alt="images" />
             </div>
-            <div
-              style={{ display: "flex", gap: "20px", flexDirection: "column" }}
-              className="navigate"
-            >
-              <Link to={"/"}>Home</Link>
-              <Popover>
-                <PopoverTrigger>
-                  <Text>Subjects</Text>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <PopoverArrow />
-                  <PopoverCloseButton />
-                  <PopoverBody>
-                    <div className="navigate">
-                      <Link className="links" to={"/"}>
-                        Home
-                      </Link>
-                      <Popover>
-                        <PopoverTrigger>
-                          <Text className="links">Subjects</Text>
-                        </PopoverTrigger>
-                        <PopoverContent>
-                          <PopoverArrow />
-                          <PopoverCloseButton />
-                          <PopoverBody>
-                            <div className="drawer">
-                              <Text className="option">Exams</Text>
-                              <Text className="option">
-                                Arts and Humanities
-                              </Text>
-                              <Text className="option">Languages</Text>
-                              <Text className="option">Math</Text>
-                              <Text className="option">Science</Text>
-                              <Text className="option">Social Science</Text>
-                              <Text className="option">Other</Text>
-                            </div>
-                          </PopoverBody>
-                        </PopoverContent>
-                      </Popover>
-                    </div>
-                  </PopoverBody>
-                </PopoverContent>
-              </Popover>
-              <Link className="links" to={"/explanations"}>
-                Expert solutions
-              </Link>
-            </div>
+            <NavigationLinks isDrawer />
             {token === undefined ? (
-              <div
-                style={{ display: "flex", gap: "20px" }}
-                className="navButton"
-              >
-                <Button
-                  onClick={() => {
-                    setLoginOpen(true);
-                  }}
-                >
-                  Login
-                </Button>
-                <Button
-                  onClick={() => {
-                    setSignupOpen(true);
-                  }}
-                >
-                  Signup
-                </Button>
-              </div>
+              <AuthButtons
+                setLoginOpen={setLoginOpen}
+                setSignupOpen={setSignupOpen}
+                isDrawer
+              />
             ) : (
-              // <Button onClick={() => dispatch({ type: LOGOUT_SUCCESS })}>
-              // 	logout
-              // </Button>
               <Profile />
             )}
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+
+      {/* Main Navbar */}
       <div className="left">
         <div className="Logo" style={{ width: "22%" }}>
           <img src={logo} alt="images" />
@@ -131,34 +179,7 @@ const Navbar = () => {
         <Button className="hambergerButton" colorScheme="blue" onClick={onOpen}>
           <BsLayoutTextSidebar />
         </Button>
-        <div className="navigate">
-          <Link className="links" to={"/"}>
-            Home
-          </Link>
-          <Popover>
-            <PopoverTrigger>
-              <Text className="links">Subjects</Text>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverBody>
-                <div className="drawer">
-                  <Text className="option">Exams</Text>
-                  <Text className="option">Arts and Humanities</Text>
-                  <Text className="option">Languages</Text>
-                  <Text className="option">Math</Text>
-                  <Text className="option">Science</Text>
-                  <Text className="option">Social Science</Text>
-                  <Text className="option">Other</Text>
-                </div>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
-          <Link className="links" to={"/explanations"}>
-            Expert solutions
-          </Link>
-        </div>
+        <NavigationLinks />
       </div>
       <div className="searchBox">
         <InputGroup>
@@ -175,27 +196,10 @@ const Navbar = () => {
         </InputGroup>
       </div>
       {token === undefined ? (
-        <div className="navButton">
-          <Button
-            colorScheme="blue"
-            onClick={() => {
-              setLoginOpen(true);
-              setSignupOpen(false);
-            }}
-          >
-            Login
-          </Button>
-          <Button
-            colorScheme="yellow"
-            className="signup_btn"
-            onClick={() => {
-              setSignupOpen(true);
-              setLoginOpen(false);
-            }}
-          >
-            Signup
-          </Button>
-        </div>
+        <AuthButtons
+          setLoginOpen={setLoginOpen}
+          setSignupOpen={setSignupOpen}
+        />
       ) : (
         <Profile />
       )}
@@ -207,6 +211,7 @@ const Navbar = () => {
 
 const DIV = styled.div`
   display: flex;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   justify-content: space-between;
   padding: 0px 12px;
   align-items: center;
@@ -256,32 +261,18 @@ const DIV = styled.div`
     .left {
       justify-content: space-between;
       gap: 20px;
-      /* display: ; */
     }
-    /* .hambergerButton {
-			display: block;
-		} */
     .navigate {
-      /* display: none;/ */
       font-weight: bold;
       font-size: 0.8rem;
     }
-    /* .navButton {
-			width: 80%;
-			display: none;
-		} */
   }
   @media only screen and (max-width: 1024px) {
     .signup_btn {
-      /* width: 100%; */
       display: none;
     }
   }
   @media only screen and (max-width: 768px) {
-    /* .left {
-			justify-content: flex-start;
-			gap: 20px;
-		} */
     justify-content: space-around;
     .hambergerButton {
       display: block;
@@ -290,44 +281,6 @@ const DIV = styled.div`
     .navigate {
       display: none;
     }
-    /* .navButton {
-			width: 100%;
-			display: none;
-		} */
-  }
-  @media only screen and (max-width: 425px) {
-    /* .left {
-			justify-content: flex-start;
-			gap: 20px;
-		}
-		.hambergerButton {
-			display: block;
-		}
-		.Logo,
-		.navigate {
-			display: none;
-		}
-		.navButton {
-			width: 100%;
-			display: none;
-		} */
-  }
-  @media only screen and (max-width: 375px) {
-    /* .left {
-			justify-content: flex-start;
-			gap: 20px;
-		}
-		.hambergerButton {
-			display: block;
-		}
-		.Logo,
-		.navigate {
-			display: none;
-		}
-		.navButton {
-			width: 100%;
-			display: none;
-		} */
   }
 `;
 
