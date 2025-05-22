@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getOneBook } from "../Redux/Books/action";
+// import { getOneBook } from "../Redux/Books/action";
 import {
   SolutionContainer,
   SolutionTitle,
@@ -21,7 +21,7 @@ const SolutionPage = () => {
   const data = useSelector((store) => store.books.data);
 
   useEffect(() => {
-    dispatch(getOneBook(id.id));
+    // dispatch(getOneBook(id.id));
   }, []);
 
   if (!data) {
