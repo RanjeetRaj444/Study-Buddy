@@ -1,29 +1,29 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const cors = require("cors")
-const userRouter = require("./routes/user.route");
-const bookRouter = require('./routes/book.route');
-const app = express()
-require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const mongoConnect = require("./utils/db");
+const userRoutes = require("./routes/user.Routes");
+const bookRoutes = require("./routes/books.Routes");
 
-app.use(express.json())
+const app = express();
+app.use(express.json());
 app.use(cors());
-const connect = async()=>{
-    try {
-        await mongoose.connect(process.env.MONGO_URI)
-        console.log("conncted")
-    } catch (error) {
-        console.log(error)
-    }
-}
-app.get("/", (req, res)=>{
-    res.send("welcome to home page!!!")
-})
-app.use("/users", userRouter);
-app.use("/books", bookRouter);
 
+app.use("/user", userRoutes);
+app.use("/books", bookRoutes);
 
-app.listen(7878, ()=>{
-    connect()
-    console.log("server run on 7878")
+app.get("/", (req, res) => {
+  res.send(`
+    <div style="height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column; background-color:wheat">
+    <h1 style="color:green">Welcome</h1>
+    <p>This is a simple API for testing purposes.</p>
+    <ul>
+    <li>for user Routes :- POST : /user/login</li>
+    <li>for user Routes :- POST : /user/register</li>
+    <li>for books Routes :- GET : /books/:subject</li>
+    <li>for books Routes :- GET : /books/:subject/:id</li>
+    </ul>
+    </div>
+    `);
 });
+
+app.listen(3001, mongoConnect);
