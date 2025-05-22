@@ -25,7 +25,6 @@ const infoSections = [
   },
 ];
 
-// Feedbacks data
 const feedbacks = [
   {
     text: "I got a 94 on my bio final thanks to StuddyBuddy 💙",
@@ -44,7 +43,6 @@ const feedbacks = [
   },
 ];
 
-// Helper component for info sections
 const InfoSection = ({ img, heading, text, imgLeft }) => (
   <div className="container">
     {imgLeft && (
