@@ -39,6 +39,5 @@ export const LogoutSuccess = () => (dispatch) => {
     .get("https://studybuddy-backend-t2yy.onrender.com/users/logout")
     .then((res) => {
       dispatch({ type: LOGOUT_SUCCESS });
-      // console.log()
     });
 };

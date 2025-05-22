@@ -11,10 +11,14 @@ const Footer = () => {
         <div className="container">
           <Text fontSize="2xl">About Us</Text>
           <Link>
-            <p>About Quizlet</p>
+            <p>
+              About <strong>Study Buddy</strong>
+            </p>
           </Link>
           <Link>
-            <p>How Quizlet works</p>
+            <p>
+              How <strong>Study Buddy</strong> works
+            </p>
           </Link>
           <Link>
             <p>Careers</p>
@@ -38,7 +42,9 @@ const Footer = () => {
             <p>Solutions</p>
           </Link>
           <Link>
-            <p>Quizlet Plus</p>
+            <p>
+              <strong>Study Buddy</strong> Plus
+            </p>
           </Link>
         </div>
         <div className="container">

@@ -19,7 +19,7 @@ const Homepage = () => {
             </div>
             <div className="imageContainer">
               <img
-                src="https://d2nchlq0f2u6vy.cloudfront.net/cache/f1/bb/f1bb7656fe953c49c272562046468bf5.jpg"
+                src="https://m.media-amazon.com/images/I/91kkk-xBuOL.jpg"
                 alt=""
               />
             </div>
@@ -32,7 +32,7 @@ const Homepage = () => {
             </div>
             <div className="imageContainer">
               <img
-                src="https://d2nchlq0f2u6vy.cloudfront.net/cache/f1/bb/f1bb7656fe953c49c272562046468bf5.jpg"
+                src="https://m.media-amazon.com/images/I/91kkk-xBuOL.jpg"
                 alt=""
               />
             </div>
@@ -45,7 +45,7 @@ const Homepage = () => {
             </div>
             <div className="imageContainer">
               <img
-                src="https://d2nchlq0f2u6vy.cloudfront.net/cache/9b/70/9b7028ce0801ff0d018c1917ef1a1a50.jpg"
+                src="https://rukminim2.flixcart.com/image/850/1000/xif0q/book/t/s/e/advanced-engineering-mathematics-original-imah7zcxrqy83vrr.jpeg?q=90&crop=false"
                 alt=""
               />
             </div>
@@ -61,7 +61,7 @@ const Homepage = () => {
           <div className="detailsContainer">
             <div className="imageContainer">
               <img
-                src="https://d2nchlq0f2u6vy.cloudfront.net/cache/c8/a5/c8a5311396364c06fa04595bbe2902f9.jpg"
+                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1672870747i/75579842.jpg"
                 alt=""
               />
             </div>
@@ -79,7 +79,7 @@ const Homepage = () => {
           <div className="detailsContainer">
             <div className="imageContainer">
               <img
-                src="https://d2nchlq0f2u6vy.cloudfront.net/cache/2c/1e/2c1ebd8444499a8944f1c1c221b4201d.jpg"
+                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677792111i/1101295.jpg"
                 alt=""
               />
             </div>
@@ -95,7 +95,7 @@ const Homepage = () => {
           <div className="detailsContainer">
             <div className="imageContainer">
               <img
-                src="https://d2nchlq0f2u6vy.cloudfront.net/cache/ed/fb/edfba486f9985ffe5b1b850ec44e2ea5.jpg"
+                src="https://slideplayer.com/10376536/35/images/slide_1.jpg"
                 alt=""
               />
             </div>
